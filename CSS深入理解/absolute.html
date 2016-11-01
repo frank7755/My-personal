@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>absolute</title>
+    <style>
+      img{
+        border: 0;
+      }
+      .box{
+        margin: 0 auto;
+        background: #f6e7ff;
+        position: absolute;
+      }
+      .little-box{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: yellow;
+      }
+      .box1{
+        margin: 0 auto;
+        background: #f6e7ff;
+      }
+      .box1 img{
+        position: absolute;
+      }
+      .box2{
+        width: 1300px;
+        height: 400px;
+        overflow: auto;
+        margin: 0 auto;
+      }
+      .box2 .circle{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        display:block;
+        border-radius: 50%;
+        line-height: 30px;
+        text-align: center;
+        background: #000;
+        color: #fff;
+        /*margin: -24px 0 0 1280px;*/
+      }
+    </style>
+  </head>
+  <body>
+    <!--包裹性！-->
+    <!--此时box被设置为absolute之后，宽高和img相同了-->
+    <div class="box">
+      <img src="../images/a.png">
+    </div>
+    <!--破坏性-->
+    <!--此时给图片加上position之后，父容器高度塌陷-->
+    <div class="box1">
+      <img src="../images/a.png">
+    </div>
+        absolute越独立越强大
+    <div class="box2">
+      <a class="circle">
+        X
+      </a>
+      <img src="../images/t1.jpg">
+    </div>
+  </body>
+</html>

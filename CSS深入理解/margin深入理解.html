@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .box{
+        overflow: hidden;
+        resize: vertical;
+        width: 1000px;
+        margin: 0 auto;
+
+      }
+      /*此时改变左右任一高度，另外一个高度和其等高*/
+      .left{
+        width: 50%;
+        float: left;
+        background: yellow;
+        height: 100px;
+      }
+      .right{
+        width: 50%;
+        float: left;
+        background: forestgreen;
+        height: 50px;
+      }
+      .left,.right{
+        padding-bottom: 600px;
+        margin-bottom: -600px;
+      }
+      .box1{
+        margin: 0 auto;
+        background: #f2c037;
+        overflow: hidden;
+        resize: both;
+        width: 100%;
+      }
+      .box1 p{
+        word-break: break-all;
+      }
+      /*用数字和字母的话，无法自动换行，必须加上*/
+      .clearfix:after{
+        clear: both;
+        *zoom: 1;
+        content:'';
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+
+    <!--两栏自适应-->
+    <div class="box1 clearfix">
+     <div style="width: 100% ;float: left;">
+      <p style="margin-right:210px;">12133231212323113221sfadsf1dsa23f13a2s1f2a1df3213a2ds1f321dsa32f132sa1f3212133231212323113221sfadsf1dsa23f13a2s1f2a1df3213a2ds1f321dsa32f132sa1f3212133231212323113221sfadsf1dsa23f13a2s1f2a1df3213a2ds1f321dsa32f132sa1f3212133231212323113221sfadsf1dsa23f13a2s1f2a1df3213a2ds1f321dsa32f132sa1f3212133231212323113221sfadsf1dsa23f13a2s1f2a1df3213a2ds1f321dsa32f132sa1f32</p>
+     </div>
+      <img src="../images/a.png" width="190" style="float: left; margin-left: -190px;">
+    </div>
+  </body>
+</html>
