@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="myFunction()">
+    <script>
+      function myFunction(){
+        var x = 34.56;
+        var y = true;
+        var z;
+        var a = null;
+        var strx = String(x);
+        var stry = String(y);
+        var strz = String(z);
+        var stra = String(a);
+        document.getElementById("demo").innerHTML = strx + " " + stry + " " + strz + " " + stra;
+      }
+    </script>
+    <p id="demo"></p>
+  </body>
+</html>

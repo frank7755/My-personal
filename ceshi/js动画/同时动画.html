@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      body, ul, li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      li {
+        width: 300px;
+        height: 80px;
+        background: #00aaee;
+        margin-bottom: 40px;
+      }
+      #div1 {
+        width: 200px;
+        height: 200px;
+        background: #00aaee;
+        margin: 50px auto;
+        border: 1px solid #f00;
+        filter: Alpha(opacity=30);
+        opacity: 0.3;
+      }
+    </style>
+    <script src="同时move.js"></script>
+    <script>
+      window.onload = function (){
+        var div = document.getElementById('div1');
+        div.onmouseover = function (){
+          startMove(div, { 'width': 400, 'height': 400, 'opacity': 100, 'background': '#f00' },function (){
+            startMove(div,{'width':300})
+          })
+        };
+        div.onmouseout = function (){
+          startMove(div, { 'height': 200, 'width': 200, 'opacity': 30, 'background': '#0ae' })
+        }
+      }
+
+    </script>
+  </head>
+
+  <body>
+    <div id="div1">
+
+    </div>
+  </body>
+</html>

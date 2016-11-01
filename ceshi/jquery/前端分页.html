@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>前端分页</title>
+    <script src="../../json/news.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul, li {
+        list-style: none;
+      }
+      .content {
+        margin: 50px 0 0;
+      }
+      .bottom {
+        width: 100%;
+        margin: 30px auto 0;
+        text-align: center;
+      }
+      .bottom a:hover, .bottom a.active {
+        background: #f60;
+        color: #fff;
+      }
+      .bottom a {
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+        font-size: 15px;
+        color: #666;
+        border: 1px solid #e8e8e8;
+        text-align: center;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        margin-right: 4px;
+        text-decoration: none;
+        vertical-align: middle;
+      }
+      .item-box {
+        width: 1000px;
+        margin: 0 auto;
+        border: 1px solid #eeeeee;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 0 20px;
+      }
+      .item-box li {
+        width: 100%;
+        height: 38px;
+        border-bottom: 2px dashed #9e1317;
+        line-height: 38px;
+        margin: 10px 0;
+      }
+      .fn-left {
+        float: left;
+        display: inline;
+      }
+      .fn-right {
+        float: right;
+        display: inline;
+      }
+      .fn-clear:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+      }
+      .fn-clear {
+        zoom: 1; /* for IE6 IE7 */
+      }
+      .item-box li span {
+        padding-right: 50px;
+      }
+      .bottom a.btn {
+        width: 84px;
+        height: 34px;
+        margin-left: 10px;
+      }
+      .fn-clean-space {
+        letter-spacing: 0;
+        line-height: 0;
+        word-spacing: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <ul class="item-box" id="item">
+      </ul>
+      <div class="bottom fn-clean-space" id="btn-box">
+        <a href="javascript:;" class="btn">上一页</a>
+        <a href="javascript:;" class="btn" id="next-btn">下一页</a>
+      </div>
+    </div>
+    <script>
+      var a = news.length;
+
+      function renderNews(){
+        var result = {};
+        var length = news.length;
+        var pages = Math.ceil(length / 4);
+
+        for (var i = 0; i < pages; i++) {
+          result[i + 1] = news.slice(i * 4, (i + 1) * 4).map(function (item){   //map() 方法返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组。此时数组为news
+            return '<li>'
+              + '<span class="fn-left">' + item.type + '</span>'
+              + '<a>' + item.title + '</a>'
+              + '<i class="fn-right">' + item.time + '</i>'
+              + '</li>';
+          }).join('');
+        }
+        return result;
+
+        /* var item;
+         var page = 1;
+         var html = '';
+
+         for (var i = 0; i < length; i++) {
+         item = news[i];
+         html = '<li>'
+         + '<span class="fn-left">' + item.type + '</span>'
+         + '<a>' + item.title + '</a>'
+         + '<i class="fn-right">' + item.time + '</i>'
+         + '</li>';
+         console.log(item);
+         if (i % 4 === 0) {
+         result[++page] = html;
+         } else {
+         result[page] += html;
+         }
+         }
+         return result;
+         */
+      }
+      var itemBox = document.getElementById('item');
+      itemBox.innerHTML = renderNews()[1];
+
+      /*function setLi(){
+       //每页4条数据
+       var fragment = document.createDocumentFragment();
+       var item = 0;
+       console.time('for');
+       if (item <= a) {
+       for (var i = 0; i < a; i++) {
+       var Li = document.createElement('li');
+       var CreateSpan = document.createElement('span');
+       var CreateA = document.createElement('a');
+       var CreateI = document.createElement('i');
+       Li.appendChild(CreateSpan).className = 'fn-left';
+       Li.appendChild(CreateSpan).innerText = news[i].type;
+       Li.appendChild(CreateA);
+       Li.appendChild(CreateA).innerText = news[i].title;
+       Li.appendChild(CreateI).className = 'fn-right';
+       Li.appendChild(CreateI).innerText = news[i].time;
+       fragment.appendChild(Li);
+       item += 1;
+       }
+       }console.timeEnd('for');
+
+       var itemBox = document.getElementById('item');
+
+       itemBox.appendChild(fragment);
+       }
+
+       setLi();*/
+
+      function getPageCount(item, pageCount, num){
+        //获取页面数
+        var int = pageCount / item;
+        getInt(int);
+        num = Math.ceil(int);
+        return num;
+      }
+      function getInt(x){
+        //防止出现2.1/0.7不等于3的情况
+        var y = new Number(x);
+        var z;
+        z = y.toFixed(1);
+        return z;
+      }
+      function createA(){
+        var len = getPageCount(4, a);
+        //在上一页按钮后面动态添加a标签
+        var lastA;
+        var firstBtn = document.getElementById("next-btn");
+        var n = document.getElementById('btn-box').getElementsByTagName('a').length;
+
+        for (var i = 0; i < len; i++) {
+          if (n < len + 2) {
+            lastA = document.createElement("a");
+            insertAfter(lastA, firstBtn);
+            lastA.href = 'javascript:;';
+            /* lastA.setAttribute('data-href', '/bbbbb' + n);*/
+            lastA.innerText = n - 1;
+            n += 1;
+          }
+        }
+      }
+      // 因为js没有直接追加到指定元素后面的方法 所以要自己创建一个方法
+      function insertAfter(newElement, targetElement){ // newElement是要追加的元素 targetElement 是指定元素的位置
+        var parent = targetElement.parentNode; // 找到指定元素的父节点
+
+        if (parent.lastChild === targetElement) { // 判断指定元素的是否是节点中的最后一个位置 如果是的话就直接使用appendChild方法
+          parent.appendChild(newElement);
+        } else {
+          parent.insertBefore(newElement, targetElement); //nextSibling 表示下一个同级节点
+        }
+      }
+
+      var active = 1;
+
+      function pageClick(){
+        var aBox = document.getElementById('btn-box');
+        var aSum = aBox.getElementsByTagName('a');
+        var length = news.length;
+        var pages = Math.ceil(length / 4);
+        console.log(aSum);
+
+        for (var i = 1; i <= pages; i++) {
+          (function (e){
+            aSum[e].onclick = function (){
+              active = e;
+              return itemBox.innerHTML = renderNews()[e];
+            };
+          })(i);
+        }
+
+        aSum[0].onclick = function (){
+          return itemBox.innerHTML = renderNews()[active - 1 <= 0 ? active = 1 : --active];
+        };
+
+        aSum[pages + 1].onclick = function (){
+          return itemBox.innerHTML = renderNews()[active + 1 > pages ? active = pages : ++active];
+        };
+      }
+      //pageClick依赖于CreateA创建的a标签，必须写在createA后面
+      createA();
+      pageClick();
+    </script>
+  </body>
+</html>

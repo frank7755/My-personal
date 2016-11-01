@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>page as a tree</title>
+    <script>
+      //随机色彩生成器
+      function randomColor(){
+        var r = Math.floor(Math.random() * 255).toString(16); //Math.floor向下取整
+        r = r.length < 2 ? "0" + r : r;
+        var g = Math.floor(Math.random() * 255).toString(16);
+        g = g.length < 2 ? "0" + g : g;
+        var b = Math.floor(Math.random() * 255).toString(16);
+        b = b.length < 2 ? "0" + b : b;
+        return "#" + r + g + b;
+      }
+      function outputNode(nd){
+        var strNode = "Node Type :" + nd.nodeType;
+        strNode += " Node Name :" + nd.nodeName;
+        strNode += " Node Value :" + nd.nodeValue;
+        if (nd.style) {
+          var clr = randomColor();
+          nd.style.background = clr;
+          strNode += " background : " + clr;
+          //输出节点属性
+          console.log(strNode);
+          //处理子节点
+          var child = nd.childNodes;
+          for (var i = 0; i < child.length; i++) {
+            outputNode(child[i]);
+          }
+        }
+      }
+      window.onload = function (){
+        outputNode(document.body);
+        var img = document.images[0];
+        var str = img.getAttribute("id") +
+          "\n" + img.getAttribute("src") +
+          " \n" + img.getAttribute("alt") +
+          "\n" + img.getAttribute("title");
+        console.log(str);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="cc1">
+      <p>111111111111111111111</p>
+      <p>222222222222222222222222222222</p>
+      <p>333333333333333333333333333333333333</p>
+      <img src="../../../images/1.jpg" id="image" alt="图片" title="妹子图">
+    </div>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script src="../js/jquery-1.8.3.min.js"></script>
+    <script src="../js/jquery.smint.js"></script>
+    <title>Title</title>
+    <style>
+      main{
+        width: 1100px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .subMenu a{
+        display: inline-block;
+        vertical-align: top;
+        width: 120px;
+        height: 40px;
+        text-align: center;
+        border: 1px solid #0ea432;
+        font-size: 14px;
+        line-height: 40px;
+      }
+      .fn-clean-space{
+        font-size: 0;
+        letter-spacing: 0;
+        line-height: 0;
+      }
+      .ui-content-box div:nth-child(1){
+         width: 100%;
+        height: 700px;
+        background: #0ea432;
+        color:#fff;
+      }
+      .ui-content-box div:nth-child(2){
+        width: 100%;
+        height: 700px;
+        background: #f2c037;
+        color:#fff;
+
+      }
+      .ui-content-box div:nth-child(3){
+        width: 100%;
+        height: 700px;
+        background: #49769c;
+        color:#fff;
+
+      }
+      .ui-content-box div:nth-child(4){
+        width: 100%;
+        height: 400px;
+        background: #5d2e95;
+        color:#fff;
+
+      }
+      .top{
+        width: 100%;
+        height: 400px;
+        background: #681234;
+        color:#fff;
+      }
+      .active {
+        background: #25aae1;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="top">top</div>
+      <div class="fn-clean-space subMenu">
+        <a href="#top">top</a>
+        <a href="#s1">首页</a>
+        <a href="#s2">about</a>
+        <a href="#s3">new</a>
+        <a href="#s4">case</a>
+      </div>
+      <div class="ui-content-box">
+        <div class="s1">
+          section1
+        </div>
+        <div class="s2">
+          section2
+        </div>
+        <div class="s3">
+          section3
+        </div>
+        <div class="s4">
+          section4
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    $(function (){
+      $('.subMenu').smint({
+        'scrollSpeed' : 1000
+      });
+    })
+  </script>
+</html>

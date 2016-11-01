@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      window.onload = function (){
+        var lis = document.getElementsByTagName('li');
+        for (var i = 0; i < lis.length; i++) {
+          lis[i].timer=null;
+          lis[i].onmouseover = function (){
+            startMove(this, 600);
+          }
+          lis[i].onmouseout = function (){
+            startMove(this, 300);
+          }
+        }
+      }
+
+      function startMove(obj, iTarget){
+        clearInterval(obj.timer);
+
+        if (obj.offsetWidth == iTarget) {
+          clearInterval(obj.timer);
+        } else {
+          obj.timer = setInterval(function (){
+            //speed一定要放在定时器里面。这样才能不断变化
+            var speed = (iTarget - obj.offsetWidth) / 5;
+            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+            obj.style.width = obj.offsetWidth + speed + 'px';
+          }, 50)
+        }
+      }
+    </script>
+  </head>
+  <style>
+    body, ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      width: 300px;
+      height: 80px;
+      background: #00aaee;
+      margin-bottom: 40px;
+    }
+  </style>
+  <body>
+
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+  </body>
+</html>

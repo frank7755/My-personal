@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>circle</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    canvas {
+      margin:auto;
+      position: absolute;
+      left: 0;
+      right:0;
+      bottom: 0;
+      top: 0;
+      background: #000;
+    }
+  </style>
+  <body>
+    <canvas width="500" height="500" id="canvas">
+
+    </canvas>
+    <script>
+
+      window.onload = function (){
+        var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
+        var x = 30, y = 30;
+        var filter = 1;
+
+
+        function redCircle(){
+          var color = 'rgba(255,0,0,' + filter + ')';
+          ctx.save();
+          ctx.beginPath();
+          ctx.fillStyle = color;
+          ctx.arc(x, y, 30, 0, Math.PI * 2, false);
+          ctx.fill();
+          ctx.closePath();
+          ctx.restore();
+        }
+
+        (function draw(){
+          window.requestAnimationFrame(draw, canvas);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          redCircle();
+          if (x <= 480) {
+            x += 1;
+          } else x = 20;
+          if (y <= 480) {
+            y += 1;
+          } else y = 20;
+
+          if (filter >= 0) {
+            filter -= 0.005
+          } else {
+            filter = 1;
+          }
+        })();
+      }
+    </script>
+  </body>
+</html>

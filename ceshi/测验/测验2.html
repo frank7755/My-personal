@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      //捕获键盘的事件
+      window.onload=function(){
+        if (document.addEventListener){
+          document.addEventListener('keydown',getKey,true)
+        }
+        else if(document.attachEvent){
+          document.attachEvent('keydown',getKey)
+        }
+      }
+      function getKey(evnt){
+        var x=evnt?evnt:window.event;
+        //which 属性返回onkeypress事件触发的键的值的字符代码，或者 onkeydown 或 onkeyup 事件的键的代码。
+        console.log(x.which);
+      }
+    </script>
+  </body>
+</html>

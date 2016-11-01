@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="time();">
+    <!--先编写好网页布局-->
+
+    <h3>操作成功</h3>
+    <p><span id="seconds"></span>秒后回到主页 <a href="#" id="btn">返回</a></p>
+
+    <script type="text/javascript">
+      //获取显示秒数的元素，通过定时器来更改秒数。
+      var back=document.getElementById('btn');
+      var second = document.getElementById("seconds");
+      var num = 6;
+      function time(){
+        if (num > 1) {
+          num--;
+        }
+        else if(num=1){
+          window.location.href="http://www.baidu.com"
+        }
+        second.innerText = num;
+        setTimeout(time, 1000);
+      }
+
+      //通过window的location和history对象来控制网页的跳转。
+      back.onclick=function(){
+       window.history.go(-1);
+      }
+
+    </script>
+  </body>
+</html>

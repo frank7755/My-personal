@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      div {
+        width: 600px;
+        margin: 0 auto;
+      }
+      #smaller {
+        background-color: #00f;
+      }
+      #bigger {
+        background-color: #0f0;
+      }
+      #div1 {
+        font-size: 15px;
+        letter-spacing: normal;
+        text-align: left;
+        text-transform: none;
+        line-height: 24px;
+        font-weight: normal;
+      }
+    </style>
+    <script>
+      function makeMore(){
+        var div = document.getElementById("div1");
+        div.style.letterSpace = "5px";
+        div.style.textAlign = "justify";
+        div.style.textTransform = "uppercase";
+        div.style.fontSize = "25px";
+        div.style.lineHeight = "30px";
+        div.style.backgroundColor = "yellow";
+      }
+      function makeLess(){
+        var div = document.getElementById("div1");
+        div.style.textAlign = "center";
+        div.style.textTransform = "none";
+        div.style.fontSize = "12px";
+        div.style.lineHeight = "18px";
+        div.style.backgroundColor = "red"
+      }
+      window.onload = function (){
+        document.getElementById("smaller").onclick = makeLess;
+        document.getElementById("bigger").onclick = makeMore;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="smaller">
+      <p>make smaller</p>
+    </div>
+    <div id="bigger">
+      <p> make bigger</p>
+    </div>
+    <div id="div1">
+      <p>make normal make normal make normal make normal make normal make normal make normal make normal make normal make normal make normal make normal</p>
+    </div>
+  </body>
+</html>

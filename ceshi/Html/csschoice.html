@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+      ul li{
+        width: 200px;
+        height:200px;
+        border:1px solid #8d8d88;
+      }
+      ul li:nth-last-child(1){
+        background-color: orangered;
+      }
+      ul li:nth-last-child(1)::selection{
+        color: red;
+        background-color: white;
+      }
+      ul li:first-of-type{
+        background-color: darkgrey;
+      }
+      ul li:empty{
+        background-color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+      <ul>
+        <li>123</li>
+        <li>1233</li>
+        <li>3</li>
+        <li>3</li>
+        <li>12</li>
+        <li>2</li>
+        <li></li>
+        <li>123</li>
+      </ul>
+  </body>
+</html>

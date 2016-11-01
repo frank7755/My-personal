@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="../js/jquery.js"></script>
+  <script language="javascript" >
+    $(function(){// dom元素加载完毕
+      $("table tbody tr:odd").css("background-color","#068");
+      //获取id为tb的元素,然后寻找他下面的tbody标签，再寻找tbody下索引值是偶数的tr元素,改变它的背景色.
+      //tr:odd为奇数行，索引从0开始，0算偶数。
+    })
+  </script>
+  </head>
+  <body>
+    <table id="tb">
+      <tbody>
+        <tr><td>1 http://yuncode.net</td></tr>
+        <tr><td>2 http://yuncode.net</td></tr>
+        <tr><td>3 http://yuncode.net</td></tr>
+        <tr><td>4 http://yuncode.net</td></tr>
+        <tr><td>5 http://yuncode.net</td></tr>
+        <tr><td>6 http://yuncode.net</td></tr>
+        <tr><td>7 http://yuncode.net</td></tr>
+      </tbody>
+    </table>

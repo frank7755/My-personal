@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      window.onload = function (){
+        var date = new Date();
+        var box = document.getElementById('timeBox');
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1; //输出0-11
+        var day = date.getDate();
+        var num=date.getDay();
+        var weekend=new Array(7);
+        weekend[0]='星期天';
+        weekend[1]='星期一';
+        weekend[2]='星期二';
+        weekend[3]='星期三';
+        weekend[4]='星期四';
+        weekend[5]='星期五';
+        weekend[6]='星期六';
+        box.innerText = year + '年' + month + '月' + day + '日'+weekend[num];
+      }
+    </script>
+  </head>
+  <body>
+    <div id="timeBox">
+
+
+    </div>
+  </body>
+</html>

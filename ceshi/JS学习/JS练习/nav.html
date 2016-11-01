@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      *, body {
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        width: 100%;
+        height: 98px;
+        border-bottom: 2px solid #0d71bb;
+        background: linear-gradient(top, #00aced, #1a69a4);
+        filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#00aced',endColorStr='#1a69a4',gradientType=0);
+        background: -webkit-linear-gradient(top, #00aced, #1a69a4);
+        background: -ms-linear-gradient(top, #00aced, #1a69a4);
+      }
+      nav {
+        width: 1100px;
+        margin: 0 auto;
+      }
+      nav ul li {
+        display: inline-block;
+        height: 100px;
+        position: relative;
+        width: 60px;
+        text-align: center;
+        line-height: 100px;
+      }
+      nav ul li > a {
+        padding-bottom: 10px;
+        text-decoration: none;
+        color: #fff;
+      }
+      nav ul li > a:hover {
+        border-bottom: 2px solid #ff6600;
+      }
+      nav ul li div {
+        position: absolute;
+        border: 1px solid #00b5ad;
+        border-top: none;
+      }
+      nav ul li div a {
+        display: block;
+        width: 58px;
+        height: 36px;
+        border-bottom: 1px dashed #00aced;
+        line-height: 36px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .fn-hide{
+        display: none;
+      }
+    </style>
+    <script async src="./index.js"></script>        <!--async异步加载-->
+  </head>
+  <body>
+    <div class="header">
+      <nav>
+        <ul id="ul">
+          <li class="ui-home"><a href="javascript:;">首页</a>
+          </li>
+          <li class="ui-about"><a href="javascript:;">关于</a>
+            <div class="fn-hide">
+              <a href="javascript:;">123</a>
+              <a href="javascript:;">1111</a>
+              <a href="javascript:;">1111</a>
+            </div>
+          </li>
+          <li class="ui-contract"><a href="javascript:;">联系</a>
+            <div class="fn-hide">
+              <a href="javascript:;">123</a>
+              <a href="javascript:;">2222</a>
+              <a href="javascript:;">2222</a>
+            </div>
+          </li>
+          <li class="ui-other"><a href="javascript:;">其他</a>
+            <div class="fn-hide">
+              <a href="javascript:;">123</a>
+              <a href="javascript:;">3333</a>
+              <a href="javascript:;">3333</a>
+            </div>
+          </li>
+          <li class="ui-map"><a href="javascript:;">地图</a>
+            <div class="fn-hide">
+              <a href="javascript:;">123</a>
+              <a href="javascript:;">4444</a>
+              <a href="javascript:;">4444</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+
+</html>

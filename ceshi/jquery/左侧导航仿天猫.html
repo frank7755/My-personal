@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.8.3.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        width: 1100px;
+        margin: 0 auto;
+      }
+      ul, li {
+        list-style: none;
+      }
+      aside {
+        position: fixed;
+        left: 200px;
+        top: 300px;
+        width: 200px;
+      }
+      aside ul li {
+        display: inline-block;
+        width: 100%;
+        height: 36px;
+        color: #000;
+        text-align: center;
+        border: 1px solid #f00;
+        line-height: 36px;
+        cursor: pointer;
+      }
+      main div:nth-child(1) {
+        width: 100%;
+        height: 950px;
+        background: #0ea432;
+        color: #fff;
+      }
+      main div:nth-child(2) {
+        width: 100%;
+        height: 950px;
+        background: #f2c037;
+        color: #fff;
+      }
+      main div:nth-child(3) {
+        width: 100%;
+        height: 950px;
+        background: #49769c;
+        color: #fff;
+      }
+      main div:nth-child(4) {
+        width: 100%;
+        height: 950px;
+        background: #5d2e95;
+        color: #fff;
+      }
+      main div:nth-child(5) {
+        width: 100%;
+        height: 950px;
+        background: #778899;
+        color: #fff;
+      }
+      .active {
+        background: #00aced;
+      }
+    </style>
+  </head>
+  <body>
+    <aside>
+      <ul id="nav">
+        <li class="one">第1页</li>
+        <li class="two">第2页</li>
+        <li class="three">第3页</li>
+        <li class="four">第4页</li>
+        <li class="five">第5页</li>
+      </ul>
+    </aside>
+    <main>
+      <div id="one" class="active">
+        <h1>第1页</h1>
+      </div>
+      <div id="two">
+        <h1>第2页</h1>
+      </div>
+      <div id="three">
+        <h1>第3页</h1>
+      </div>
+      <div id="four">
+        <h1>第4页</h1>
+      </div>
+      <div id="five">
+        <h1>第5页</h1>
+      </div>
+    </main>
+    <script>
+      //获取距页面顶部的偏移量
+      $(function (){
+        var oneTop = $("#one").offset().top;
+        var twoTop = $("#two").offset().top;
+        var threeTop = $("#three").offset().top;
+        var fourTop = $("#four").offset().top;
+        var fiveTop = $("#five").offset().top;
+        $(window).scroll(function (){
+          var scrTop = $(this).scrollTop() + 150;  //滚动的高度+顶部导航的高度
+
+          if (scrTop >= oneTop && scrTop < twoTop) {   //判断一个区间
+            setBg('.one');   //改变导航状态，，背景变化
+            console.log('one');
+          } else if (scrTop >= twoTop && scrTop < threeTop) {
+            setBg('.two');
+            console.log('two');
+          }
+          else if (scrTop >= threeTop && scrTop < fourTop) {
+            setBg('.three');
+            console.log('three');
+          }
+          else if (scrTop >= fourTop && scrTop < fiveTop) {
+            setBg('.four');
+            console.log('four');
+          }
+          else if (scrTop >= fiveTop) {
+            setBg('.five');
+            console.log('five');
+          }
+        });
+        $('li').click(function (event){
+          var elm = $(this).attr('class');
+          $('html,body').animate({
+            scrollTop: $('#' + elm).offset().top
+          }, 1500);
+          $(this).addClass("active").siblings().removeClass("active");
+        });
+        function setBg(n){
+          $('#nav li.active').removeClass('active');
+          $('#nav li' + n).addClass('active')
+        }
+      })
+    </script>
+
+  </body>
+</html>

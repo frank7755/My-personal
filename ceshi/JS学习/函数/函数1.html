@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="testParams();">
+    <script>
+      //函数参数，传值和传引用(传址)
+      function alterArg(str, arr){
+        str = "Override";
+
+        arr[1] = "2";
+        arr[arr.length] = "Three";
+
+        console.log("scope array object is %o", arr);
+
+        return [str, arr];
+      }
+      function testParams(){
+        var str = "Original Literal";
+        var arr = ["One", "Two"];
+
+        alterArg(str, arr);
+
+        console.log("string literal is %s", str);
+        console.log("array object is %o", arr);
+      }
+
+      var x = 'x';
+
+      function scope(){
+        var x;
+
+        console.log('in x before:', x);
+
+        x = 'y';
+
+        console.log('in x after:', x);
+      }
+
+      scope();
+
+      console.log('out x:', x);
+    </script>
+  </body>
+</html>

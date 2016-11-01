@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+      .box{
+        margin: 0 auto;
+        padding: 56px 14px 15px;
+        position: relative;
+        width: 890px;
+      }
+      .clearfix:after,.clearfix:before{
+        clear: both;
+        *zoom: 1;
+        content:'';
+        display: block;
+      }
+      .left{
+        width: 290px;
+        float: left;
+        box-sizing: border-box;
+        background: indianred;
+        height: 300px;
+      }
+      .center{
+        width: 590px;
+        box-sizing: border-box;
+        min-height: 100%;
+        height: 1500px;
+        background: yellowgreen;
+        float: right;
+        position: relative;
+      }
+      .right{
+        float: left;
+        width: 290px;
+        background: cornflowerblue;
+        height: 300px;
+      }
+      @media (min-width: 1239px){
+        .box{
+          width: 1190px;
+          padding: 56px 23px 15px;
+        }
+        .center{
+          float: left;
+          margin: 0 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box clearfix">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+    </div>
+  </body>
+</html>

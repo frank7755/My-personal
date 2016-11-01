@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 1280px;
+        height: 720px;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+      }
+      #scroll-box {
+        width: 999999px;
+        height: 720px;
+        position: relative;
+      }
+      #scroll-box img {
+        display: block;
+        float: left;
+      }
+      #ul-box {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        margin-left: -120px;
+      }
+      ul, li {
+        list-style: none;
+      }
+      li {
+        display: inline-block;
+        vertical-align: top;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+      }
+      .active {
+        background: yellow;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="scroll-box">
+        <img src="../../images/t1.jpg">
+        <img src="../../images/t2.jpg">
+        <img src="../../images/t3.jpg">
+        <img src="../../images/t4.jpg">
+        <img src="../../images/t5.jpg">
+      </div>
+        <ul  id="ul-box">
+          <li class="active">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+        </ul>
+    </div>
+    <script>
+      var container = document.getElementById('container');
+      var i = 0;
+      function imgScroll(){
+        var scrBox = document.getElementById('scroll-box');
+        var img = scrBox.getElementsByTagName('img');
+        if (i < img.length) {
+          scrBox.style.marginLeft = '-' + 1280 * i + 'px';
+          i += 1;
+        }
+        else {
+          scrBox.style.marginLeft = 0;
+          i = 0;
+        }
+      }
+      function siblings(obj){
+        var ulBox=document.getElementById('ul-box');
+        var li=ulBox.getElementsByTagName('li');
+        for(var i=0; i<li.length;i++){
+          obj[i].parentNode.childNodes
+        }
+      }
+      setInterval("imgScroll()", 1500);
+    </script>
+  </body>
+</html>

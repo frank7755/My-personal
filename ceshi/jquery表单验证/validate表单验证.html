@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>validate表单验证</title>
+    <link href="../CSS/base.css" rel="stylesheet">
+    <script src="../js/jquery-1.10.0.js"></script>
+    <script src="../js/jquery.validate-1.13.1.js"></script>
+    <style>
+      form {
+        width: 800px;
+        margin: 0 auto;
+      }
+      form p {
+        padding: 40px 0;
+      }
+      fieldset {
+        border: 2px solid #eeeeee;
+      }
+      legend {
+        margin: 0 0 0 40px;
+        color: #00aced;
+      }
+      label.error{
+        color: red;
+        font-size: 12px;
+        margin-left: 10px;
+        display: block;
+      }
+    </style>
+    <script>
+      $.validator.setDefaults({
+        submitHandler: function (){
+          alert("提交成功!");
+        }
+      });
+      $(function (){
+        $("#test-form").validate({
+          debug: true,
+          // onfocusout:true,
+          rules: {
+            name: "required",
+            confirmPassword: {
+              required: true,
+              equalTo: "#password"
+            },
+            password: {
+              required: true,
+              rangelength: [6, 16]
+            },
+            email: {
+              required: true,
+              email: true
+            },
+            time: {
+              required: true,
+              date: true,
+              dateISO: true
+            }
+          },
+          messages: {
+            name: {
+              required: "请输入您的名字"
+            },
+            email: {
+              required: "请输入您的邮箱",
+              email: "请输入正确的邮箱格式"
+            },
+            confirmPassword: {
+              required: "请输入密码",
+              equalTo: "两次输入密码不一致"
+            },
+            password: {
+              required: "请输入密码",
+              rangelength: "密码长度必须为6-16之间"
+            },
+            time: {
+              required: "请输入创建时间",
+              date: "请输入有效日期",
+              dateISO: "请输入有效的日期 (YYYY-MM-DD)"
+            }
+          }
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <form id="test-form" method="get">
+      <fieldset>
+        <legend>
+          输入你的名字，邮箱，密码
+        </legend>
+        <p>
+          <label for="name">输入你的名字</label>
+          <input id="name" name="name" type="text">
+        </p>
+        <p>
+          <label for="email">输入你的邮箱</label>
+          <input id="email" name="email" type="text">
+        </p>
+        <p>
+          <label for="password">输入你的密码</label>
+          <input id="password" name="password" type="password">
+        </p>
+        <p>
+          <label for="confirmPassword">输入你的密码</label>
+          <input id="confirmPassword" name="confirmPassword" type="password">
+        </p>
+        <p>
+          <label for="time">输入你的创建时间</label>
+          <input id="time" name="time" type="text">
+        </p>
+        <p>
+          <input type="submit" value="提交">
+        </p>
+      </fieldset>
+    </form>
+  </body>
+</html>

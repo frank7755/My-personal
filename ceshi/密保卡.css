@@ -1,0 +1,53 @@
+body,*{
+  margin: 0;
+  padding: 0;
+  font-family: "微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif, "宋体";
+}
+.ui-card-box{
+  width: 770px;
+  height: auto;
+  background: #ffd6b3;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+.ui-card{
+  margin-right: 300px;
+
+}
+.ui-title{
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+  font-size: 25px;
+  color: #666;
+}
+table{
+  width: 740px;
+  margin: 0 auto;
+  background: #fff;
+  text-align: center;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+table td ,table th{
+  border: 1px solid #ffdcbd;
+  line-height: 49px;
+  height: 49px;
+  color: #333;
+}
+.ui-row th{
+  background: #9aafea;
+  color: #fff;
+}
+.ui-row th:first-child{
+  background: none;
+}
+table tr th {
+  background: #99d5fe;
+  color: #fff;
+}
+.ui-number-bg{
+  background: #ffe2d9;
+}

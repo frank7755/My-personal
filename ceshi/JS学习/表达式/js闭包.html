@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <button type="button" onclick="myFunction()">计数!</button>
+
+    <p id="demo">0</p>
+
+    <script>
+      var add = function (){
+        var counter = 0;
+        console.log(counter);
+        return function (){return counter += 1;};
+      }();
+
+      function myFunction(){
+        document.getElementById("demo").innerHTML = add();
+        console.log(add());
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      'use strict';
+      window.onload = function (){
+        var img=document.images[0];
+        var imgAttr=img.id +" "+img.alt+" "+img.title;
+        console.log(imgAttr);
+        img.src="../../../images/2.jpg";
+        img.alt="图片1";
+        img.title="还是图片1";
+        img.width=800;
+        img.height=300;
+      }
+    </script>
+  </head>
+  <body>
+    <p><img src="../../../images/1.jpg" alt="图片" title="还是图片" id="img-test"></p>
+  </body>
+</html>

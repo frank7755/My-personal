@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="arrlist();">
+    <script>
+      //计算1到n的乘积  使用递归函数（函数调用函数本身）
+      function multiply(n){
+        if (n == 0) return 1;
+        return n * multiply(n - 1);
+      }
+      var num = multiply(4);
+      console.log(num);
+
+      //传入1~5之间的数字，用相应字符串替换他们（“One”,"Two","Three"）
+      function arrlist(){
+        var arr = [1, 5, 3];
+        console.log(arr);
+        alterArray(arr);
+        console.log(arr);
+        console.log(arr.length);
+      }
+      function alterArray(number){
+        for (var i = 0; i < number.length; i++) {
+          //switch 里面的number[i]为值，与case后面的值（1,2,3，4，5）比较，然后执行：后面的语句；
+          switch (number[i]) {
+            case 1:
+              number[i] = "One";
+              break;
+            case 2:
+              number[i] = "Two";
+              break;
+            case 3:
+              number[i] = "Three";
+              break;
+            case 4:
+              number[i] = "Four";
+              break;
+            case 5:
+              number[i] = "Five";
+              break;
+            default:
+              number[i] = 'Six';
+          }
+        }
+      }
+      //functionToCall为函数体
+      function invokeFunction(dataobject, functionToCall){
+        functionToCall(dataobject);
+      }
+      var functioncall = new Function("x", "console.log(x)");
+      invokeFunction('hello', functioncall)
+    </script>
+  </body>
+</html>

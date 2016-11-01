@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="setTime()">
+    <div style="border-radius:50%;width: 100px;height: 100px; background: #00aced;"></div>
+    <p id="time"></p>
+    <script>
+      //通过javascript的日期对象来得到当前的日期，并输出。
+      var time = document.getElementById('time');
+
+      function setTime(){
+        var mydate = new Date();
+        var year = mydate.getFullYear();
+        var month = mydate.getMonth();
+        var date = mydate.getDate();
+        var hour = mydate.getHours();
+        var minute = mydate.getMinutes();
+        var seconds = mydate.getSeconds();
+
+        if (month < 10) {
+          month = "0" + month
+        }
+
+        if (date < 10) {
+          date = "0" + date
+        }
+
+        time.innerText = year + '年' + month + '月' + date + '日' + hour + '时' + minute + '分' + seconds + '秒';
+
+        console.log(time.innerText);
+
+        setTimeout(setTime, 1000 - new Date().getMilliseconds());
+
+      }
+
+      //      setInterval(setTime,1000);
+      var scoreStr = "小明:87;小花:81;小红:97;小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76";
+      var arr = scoreStr.split(';');
+      var scoreArr = new Array();
+      console.log(arr);
+      for (var i = 0; i < arr.length; i++) {
+        var score = arr[i].split(':');
+        scoreArr.push(score[1])
+      }
+      console.log(scoreArr);
+      var sum = 0;
+      for (var j = 0; j < scoreArr.length; j++) {
+        sum += parseInt(scoreArr[j]);
+      }
+      var average = parseInt(sum / scoreArr.length, 10);
+      document.write("平均分：" + average);
+      //从数组中将成绩撮出来，然后求和取整，并输出。
+    </script>
+  </body>
+</html>

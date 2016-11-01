@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="loop();loopOne();loopTwo();loopThree();loopFour()">
+    <script>
+      function loop(){
+        var y = "";
+        var i = 1;
+        while (i <= 10) {
+          y = y + i;
+          i++;
+          document.write("<p>" + y + "</p>");
+        }
+      }     //while 循环   更适合循环会影响表达式的情况
+
+      function loopOne(){
+        var y = "";
+        var i = 1;
+        do {
+          y += i;
+          i++;
+          document.write("<p>" + y + "</p>");
+        } while (i <= 10)
+      }  //do while 循环  若i初始值为11，还会执行do里面的命令一次；  更适合无论条件是否成立都执行一次代码的情况
+
+      function loopTwo(){
+        var y = "";
+        for (var i = 1; i <= 10; i++) {
+          y += i;
+          document.write("<p>" + y + "</p>");   //for 循环   正向遍历   更适合代码执行特定的次数的情况
+        }
+      }
+      function loopThree(){
+        var y = "";
+        for (var i = 10; i>= 1; i--) {
+          y += i;
+          document.write("<p>" + y + "</p>");   //for 循环   反向遍历
+        }
+      }
+
+      function loopFour(){
+        var myText={ x:1,y:2,z:3}; //自定义对象包涵x,y,z 三个属性
+        for (var number in myText){
+          document.write("<p>"+number+"</p>");  //循环3个对象
+        }
+      }
+    </script>
+  </body>
+</html>

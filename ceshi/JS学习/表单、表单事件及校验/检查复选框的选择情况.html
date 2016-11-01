@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function catchEvent(evntobj, event, eventHandle){
+        if (evntobj.addEventListener) {
+          evntobj.addEventListener(event, eventHandle, false);
+          //false 表示事件处于冒泡阶段  True 表示事件处于捕获阶段
+          //evntobj为元素对象Element
+        }
+        else if (evntobj.attachEvent) {
+          event = "on" + event;
+          evntobj.attachEvent(event, eventHandle);
+        }
+      }
+      catchEvent(window, "load", setUpEvent);
+      function cancelEvent(event){
+        if (event.preventDefault) {
+          event.preventDefault();  //阻止默认事件，如a标签有链接，加上后不会跳转
+          event.stopPropagation();  //其他浏览器阻止事件冒泡
+        }
+        else {
+          event.returnValue = false;
+          event.cancelBubble = true;  //IE下阻止事件冒泡
+        }
+      }
+      function setUpEvent(){
+        catchEvent(document.getElementById("someform"), "submit", checkSelect)
+      }
+      function checkSelect(evnt){
+        var theEvent = evnt ? evnt : window.event;
+        var opts = document.getElementById("someform").car.options;
+        for (i = 0; i < opts.length; i++) {
+          if (opts[i].selected) {
+            switch (opts[i].value) {
+
+              case "Q7":
+                opts[i+1].selected = true;
+                break;
+              case "V3":
+                opts[i+1].selected = true;
+                break;
+              case "X6":
+                opts[i+1].selected = true;
+                break;
+            }
+          }
+        }
+        cancelEvent(theEvent);
+      }
+    </script>
+
+  </body>
+</html>

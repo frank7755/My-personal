@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="myFunction();myFunction1();myFunction2(); myFunction3();myFunction4()">
+    <script>
+      function myFunction(){
+      /*  var arr = new Array('cats', 'dogs', 'birds', 'animals');
+        document.write(arr[2] + "<br>")*/
+        var str="cats,dogs,bird,animals";
+        var arr=str.split(",");
+        document.write(arr[2] + "<br>")
+      }
+      function myFunction1(){
+        var re = /\bfun\b/ig;
+        var str = "the fun of function is that they are functional.";
+        var result1 = str.replace(re, "power");
+        document.write(result1 + "<br>");
+      }
+      function myFunction2(){
+        var dt = new Date();
+        document.write(dt + "<br>");
+        var hour = dt.getDate();
+            hour += 7;
+            dt.setDate(hour);
+        document.write(dt + "<br>");
+
+      }
+      function myFunction3(){
+        var x = 34.44;
+        var y = Math.floor(x); //向下取整
+        var z = Math.ceil(x); //向上取整
+        document.write(y + "<br>");
+        document.write(z + "<br>");
+      }
+      function myFunction4(){
+        var re = /[\.|\-]/g;
+        var str = "apple.orange-strawberry,lemon-.lime";
+        var result = str.replace(re, ",");
+        document.write(result + "<br>");
+        var aftermatch = result.split(",");
+        for (var i = 0; i < aftermatch.length; i++) {
+          document.write(aftermatch[i] + "<br>")
+        }
+
+      }
+    </script>
+  </body>
+</html>

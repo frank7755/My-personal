@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>处理多选框结果</title>
+  </head>
+  <body>
+    <script>
+      function catchEvent(evntobj, event, eventHandle){
+        if (evntobj.addEventListener) {
+          evntobj.addEventListener(event, eventHandle, false);
+          //false 表示事件处于冒泡阶段  True 表示事件处于捕获阶段
+          //evntobj为元素对象Element
+        }
+        else if (evntobj.attachEvent) {
+          event = "on" + event;
+          evntobj.attachEvent(event, eventHandle);
+        }
+      }
+      catchEvent(window, "load", setUpEvent);
+      function cancelEvent(event){
+        if (event.preventDefault) {
+          event.preventDefault();  //阻止默认事件，如a标签有链接，加上后不会跳转
+          event.stopPropagation();  //其他浏览器阻止事件冒泡
+        }
+        else {
+          event.returnValue = false;
+          event.cancelBubble = true;  //IE下阻止事件冒泡
+        }
+      }
+      function setUpEvent(evnt){
+        catchEvent(document.getElementById("someform"), "submit", checkForm)
+      }
+      function checkForm(evnt){
+        var theEvent = evnt ? evnt : window.event;
+        var opts = document.getElementById("someform").car.options;
+        //动态添加Option元素；
+        opts[opts.length] = new Option("法拉利", "F1");
+        for (var i = 0; i < opts.length; i++) {
+          if (opts[i].selected) {
+            //alert(opts[i].text + " " + opts[i].value)
+            //opts[i]删除选中项
+            opts[i] = null;
+          }
+        }
+        //        return false;
+        cancelEvent(theEvent);
+      }
+
+    </script>
+
+    <form id="someform" action="">
+      <p>
+        <select id="car" multiple="multiple">
+          <option value="Q7">audi</option>
+          <option value="A1">auto</option>
+          <option value="V3">volvo</option>
+          <option value="X6">bmw</option>
+        </select>
+      </p>
+      <input value="submit" type="submit">
+    </form>
+  </body>
+</html>

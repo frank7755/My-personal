@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <style>
+    div { width: 200px; height: 200px; margin: auto; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #f5f5f5; }
+    div img {
+      filter: progid:DXImage.Transform.Microsoft.AlphaImageLoader(src='/Frank/images/right.png', sizingMethod='scale');
+    }
+  </style>
+  <script>
+    window.onload = function (){
+      var divwa = document.getElementById("div1");
+      //测试filter对象是否存在
+      var test1 = divwa.style.filter ? "exist" : "not exist";
+      console.log(test1);
+      //测试filter对象是否存在
+      var test2 = (typeof (divwa.style.filter) !== "undefined") ? "exist" : "not exist";
+      console.log(test2);
+      //测试filter对象是否存在
+      var test3 = divwa.style.filter !== "undefined" ? "exist" : "not exist";
+      console.log(test3);
+      //测试opacity对象是否存在
+      var test4=divwa.style.opacity?"exist":"not exist";
+      console.log(test4);
+      var test5 = (typeof (divwa.style.opacity) !== "undefined") ? "exist" : "not exist";
+      console.log(test5);
+    }
+  </script>
+  <body>
+    <div id="div1">
+      <img src="/Frank/images/left.png">
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>通过apply方法构造函数链和继承</title>
+    <script>
+      function Tune(title, type){
+        this.title = title;
+        this.type = type;
+        this.getTitle = function (){
+          return " song: " + this.title + " Type: " + this.type;
+        }
+      }
+      function Artist_tune(title, type, artist){
+        this.artist = artist;
+        this.toString("Artist is" + artist);
+        Tune.apply(this, arguments);   //Apply调用Tune的方法
+        this.toString = function (){
+          return "Artist: " + this.artist + " " + this.getTitle();
+        }
+      }
+      window.onload = function (){
+        Artist_tune.prototype = new Tune();
+        var song = new Artist_tune("I want to hold your hand", "rock", "Beatles");
+        document.writeln(song.toString());
+      }
+    </script>
+  </head>
+  <body>
+    <p>some content</p>
+  </body>
+</html>

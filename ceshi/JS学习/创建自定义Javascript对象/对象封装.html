@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=Emulate=IE7">
+    <title>对象封装</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        position: relative;
+      }
+      #div1 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-block;
+        width: 50%;
+      }
+      #div2 {
+        position: absolute;
+        right: 0;
+        top: 0; display: inline-block;
+        width: 50%;
+        opacity: 0;
+        filter: alpha(opacity=0);
+      }
+      #div1 img {
+        filter: progid:DXImageTransform.Microsotf.AlphaImageLoader(src=../../../image/ 1.jpg, sizingMethod='scale');
+      }
+      #div2 img {
+        filter: progid:DXImageTransform.Microsotf.AlphaImageLoader(src=../../../image/ 2.jpg, sizingMethod='scale');
+      }
+
+    </style>
+    <script>
+      var theObject = new Array();
+      document.onclick = function (){
+        //淡出DIV1
+        var currentOpacity = theObject["div1"].objGetOpacity();
+        if (currentOpacity <= 0) {
+          document.onclick = null;
+          return
+        }
+        currentOpacity -= 0.1;
+        theObject["div1"].objSetOpacity(currentOpacity);
+        //展现DIV2
+        currentOpacity = theObject["div2"].objGetOpacity();
+        currentOpacity += 0.1;
+        theObject["div2"].objSetOpacity(currentOpacity);
+      };
+      function DivObj(obj){
+        this.obj = obj;
+        this.objGetOpacity = function (){
+          return parseFloat(this.obj.style.opacity);
+        };
+        this.alphaOpacity = function (value){
+          var opacity = value * 100;
+          this.obj.style.filter = "alpha(opacity=" + opacity + ")"
+        };
+        this.cssOpacity = function (value){
+          this.obj.style.opacity = value;
+        };
+        this.objSetOpacity = function (value){
+          this.alphaOpacity(value);
+          this.cssOpacity(value);
+        }
+      }
+      window.onload = function (){
+        theObject["div1"] = new DivObj(document.getElementById("div1"));
+        console.log(theObject["div1"]);
+        theObject["div2"] = new DivObj(document.getElementById("div2"));
+        //设置最初的透明度
+        theObject["div1"].objSetOpacity(1.0);
+        theObject["div2"].objSetOpacity(0.0);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="div1">
+      <img src="../../../images/1.jpg" width="100%">
+    </div>
+    <div id="div2">
+      <img src="../../../images/2.jpg" width="100%">
+    </div>
+  </body>
+</html>

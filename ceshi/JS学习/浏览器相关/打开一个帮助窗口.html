@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function catchEvent(object, event, eventHandler){
+        if (object.addEventListener) {
+          object.addEventListener(event, eventHandler, false);
+        }
+        else if (object.attachEvent) {
+          event = "on" + event;
+          object.attachEvent(event, eventHandler);
+        }
+      }
+      catchEvent(window, "load", setUpEvent);
+      function setUpEvent(){
+        document.forms[0].elements[0].focus();
+        var evntObject=document.getElementById("no");
+        catchEvent(evntObject,"click",openHelp)
+      }
+      function openHelp(x){
+        var openstr="width=500,height=400,toolbar=yes,resizeable=no,location=no";
+        var helpWindow=window.open("help.html","test",openstr);
+        helpWindow.focus();
+        helpWindow.moveTo(x.screenX, x.screenY);
+        return false;
+      }
+    </script>
+    <form id="current">
+      <p>your name:<input type="text" size="50"></p>
+    </form>
+    <div id="no" style="width: 100px; height: 40px; background: #f00; padding: 10px; margin-left: 100px;">
+      <p>click for help</p>
+    </div>
+  </body>
+</html>

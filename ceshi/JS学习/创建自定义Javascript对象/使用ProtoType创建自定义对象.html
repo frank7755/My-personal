@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function Tune(title){
+        this.title = title;
+      }
+      function printTitle(){
+        document.writeln(this.title + "<br>")
+      }
+      window.onload = function (){
+        Tune.prototype.print = printTitle;
+        var oneTune = new Tune("one Title");
+        oneTune.print();
+        var anotherTune = new Tune("another Tune");
+        anotherTune.print();
+      }
+    </script>
+  </body>
+</html>

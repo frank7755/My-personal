@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="stringConcat();stringTest()">
+    <script>
+      function stringConcat(){
+        var x=new String();
+        var y= x.concat("Today","is","Friday!");
+        document.write("<p>"+y+"</p>");
+        var z=new String("This is a test String!");
+        document.write(z.big()+"<br>");  //用于显示大号字体
+        document.write(z.blink()+"<br>");//用于显示闪动字体
+        document.write(z.sup()+"<br>");  //字符串显示为上标
+        document.write(z.strike()+"<br>"); //带删除线
+        document.write(z.bold()+"<br>"); //粗体
+        document.write(z.italics()+"<br>");//斜体
+        document.write(z.small()+"<br>");//小号字体
+        document.write(z.link("http://www.qq.com")+"<br>");
+        document.write(z.charAt(3)+"<br>");  //从0开始返回字符   输出为S
+        document.write(z.substr(5,8)+"<br>");  //参数为开始位置与字符串长度  输出 is a tes  结束位置小于开始位置会自动交换
+        document.write(z.substring(5,8)+"<br>");  //参数为开始位置与结束位置  输出 is  结束位置小于开始位置会自动交换
+        document.write(z.slice(8,5)+"<br>");  //参数为开始位置与结束位置  输出 is  结束位置小于开始位置返回空字符串
+        document.write(z.indexOf("i")+"<br>");  //返回字符串第一次出现的位置 从0开始
+      }
+
+      function stringTest(){
+        var str=new String("firstname=frank,lastname=fu,for String test");
+        document.write(str.split(",",2)+"<br>"); //第一个是分隔符 第二个为分割的数量
+        document.write(str.split("=",2)+"<br>");
+      }
+    </script>
+
+  </body>
+</html>

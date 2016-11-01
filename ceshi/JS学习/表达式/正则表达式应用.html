@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="myFunction();myFunction1();myFunction2();myFunction3();myFunction4();myFunction5();myFunction6()">
+    <script>
+      // （.*）贪婪匹配 尝试到最后 （.*？）延迟匹配 零次或一次
+      //正则表达式中的转义符 *表示零次出现或多次出现  加号（+）表示出现一次或多次  （？）表示一次出现或者零次 （.）表示只出现一次
+      function myFunction(){
+        var re = /\s\*/g;  //\s为转义字符，表示空格 、制表符、换行符
+        var str = "This *is *a *test *string";
+        var result = str.replace(re, "-");
+        document.write(result); //输出为This-is-a-test-string  空格后面的*被转换为-
+      }
+
+      //\D表示查找任何非数字符号 \d表示只匹配数字
+      function myFunction1(){
+        document.write("<br>");
+        var re = /:\D*\s\d+\s\d*/;
+        var str = "this is a date: @March 12 2016";
+        var result = str.match(re);
+        document.write("Date" + result);
+      }
+      function myFunction2(){
+        document.write("<br>");
+        var re = /[0-9a-zA-Z]*\D*/; //[]里面表示匹配的字符  [^0-9]表示匹配数字以外的任何字符
+        var str = "271733455@qq.com";
+        var result = str.match(re);
+        document.write("mail:" + result);
+      }
+
+      //（^）还可以用来表示开始（$）可以用来表示结束
+      function myFunction3(){
+        document.write("<br>");
+        var re = /^The/i;
+        var re1 = /ing$/i;
+        var str = "this is the string";
+        var str1 = "the example";
+        var result2 = str.match(re);
+        var result3 = str1.match(re);
+        var result4 = str.match(re1);
+        var result5 = str1.match(re1);
+        document.write("one:" + result2 + "<br>");  //输出one:null
+        document.write("two:" + result3 + "<br>");//输出two:the
+        document.write("three:" + result4 + "<br>");//输出three:ing
+        document.write("four:" + result5 + "<br>");//输出four:null
+      }
+
+      //括号使用  返回数组有2条记录  第一条表示正则表达式的匹配  第二条表示括号内的匹配
+      function myFunction4(){
+        var re=/(^\D*)([0-9])/;
+        var str="this is fun 01 stuff";
+        var result=str.match(re);
+        document.write(result);//输出this is fun 0，this is fun,0
+      }
+
+      //通过正则表达式交换字符串
+      function myFunction5(){
+        var re=/(\w*)-*(\w*)/;  //  \w表示任何数字或字母  包括下划线；\W表示任何非数字或字母
+        var str="Java---Script";
+        var result=str.replace(re,"$2-$1");
+        document.write(result+"<br>");
+      }
+      //  a|b|c  表示为可选   S{2} 里面{}里面表示匹配个数2个S
+
+      function myFunction6(){
+        var re=/.\b./;  //\b与^和$类似，它要求它的匹配结果一边在“\w”的范围，一边在非“\w”的范围；
+        var str="@@@abc";
+        var result=str.match(re);
+        document.write(result+"<br>")
+      }
+    </script>
+  </body>
+</html>

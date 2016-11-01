@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="convertToNumber()">
+    <script>
+      function convertToNumber(){
+        var sum="1.25e-2";
+        document.writeln("<p>"+parseInt(sum)+"</p>");
+        document.writeln("<p>"+parseFloat(sum)+"</p>");
+        var sum1="1.45 inch";
+        document.writeln("<p>"+parseFloat(sum1)+"</p>");
+        var sum2="-33.50";
+        document.writeln("<p>"+parseFloat(sum2)+"</p>");
+        // parseInt  字符串转换为整数
+        //parseFloat 字符串转换为数字
+        var sum3="32";
+          document.writeln("<p>"+parseInt(sum3,8)+"</p>"); //8进制32转换为10进制26
+        document.writeln("<p>"+parseInt(sum3,16)+"</p>");  //16进制32转换为10进制50
+        document.writeln("<p>"+parseInt(sum3,4)+"</p>");  //4进制32转换为10进制14
+        var sum4="32.65";
+        document.writeln("<p>"+parseInt(sum4).toString(8)+"</p>");  //10进制32转换为10进制40
+      }
+    </script>
+  </body>
+</html>

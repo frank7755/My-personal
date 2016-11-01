@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="conNumber()">
+    <script>
+      function conNumber(){
+        var a=new Number(-3.5614); //对象实例
+        var b=a.MAX_VALUE;   //返回  undefine  .MAX_VALUE  .MIN_VALUE等职能用于Number
+        document.write("<p>"+a+"</p>");
+        document.write("<p>"+b+"</p>");
+        var c=Number.MAX_VALUE; //1.7976931348623157e+308 最大值   强调访问对象本身，而不是 Number实例
+        var d=Number.MIN_VALUE;//5e-324 最小值
+        var e=Number.NEGATIVE_INFINITY; //负无穷
+        var f=Number.POSITIVE_INFINITY;//正无穷
+        var g=Number.NaN;//非数字
+        document.write("<p>"+c+"</p>");
+        document.write("<p>"+d+"</p>");
+        document.write("<p>"+e+"</p>");
+        document.write("<p>"+f+"</p>");
+        document.write("<p>"+g+"</p>");
+        document.write("<p>"+ a.toExponential(3)+"</p>");//Number 对象方法  参数为小数点位数  输出3.561e+0 e+0位10的0次方
+        document.write("<p>"+ a.toFixed(6)+"</p>");//Number 对象方法 参数表示十进制取整后的位数 3.561400
+        document.write("<p>"+ a.toPrecision(2)+"</p>");//Number 对象方法  参数表示字符转换中数字的位数 输出3.6
+        var h= a.valueOf();
+        document.write("<p>"+ h+"</p>");
+        document.write("<p>"+ h.toString(2)+"</p>");
+        document.write("<p>"+ h.toString(4)+"</p>");
+        document.write("<p>"+ h.toString(8)+"</p>");
+      }
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      window.onload = function (){
+        var div = document.getElementById("test-div");
+        var leng = document.links.length;
+        for (var i = 0; i < leng; i++) {
+          var link = document.links;
+          var href = link.item(i).href;
+          var p = document.createElement("p");
+          var txt = document.createTextNode(href);
+          p.appendChild(txt);
+          div.appendChild(p);
+        }
+
+      }
+    </script>
+  </head>
+  <body>
+    <p><a href="http://www.qq.com"> first</a></p>
+    <p><a href="http://www.baidu.com">second</a></p>
+    <p><a href="http://www.sina.com">third</a></p>
+    <p><a href="http://www.163.com">fouth</a></p>
+    <div id="test-div">
+
+    </div>
+  </body>
+</html>

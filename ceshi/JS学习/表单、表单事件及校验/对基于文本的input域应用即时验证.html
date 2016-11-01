@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function catchEvent(eventobj, event, eventHandle){
+        if (eventobj.addEventListener) {
+          eventobj.addEventListener(event, eventHandle, false)
+        }
+        else if (eventobj.attachEvent) {
+          event = "on" + event;
+          eventobj.attachEvent(event, eventHandle);
+        }
+      }
+      catchEvent(window, "load", setUpEvent);
+      function cancelEvent(event){
+        if (event.preventDefault) {
+          event.preventDefault();  //其他浏览器阻止默认事件
+          event.stopPropagation();  //其他浏览器阻止事件冒泡
+        }
+        else {
+          event.returnValue = false;  //IE下阻止默认事件
+          event.cancelBubble = true; //IE下阻止事件冒泡
+        }
+      }
+      function setUpEvent(){
+        catchEvent(document.getElementById("t2"), "blur", checkRequire);
+        catchEvent(document.getElementById("t1"), "change", validateForm);
+      }
+      function checkRequire(evnt){
+        var theEvent = evnt ? evnt : window.event;
+        var target = theEvent.target ? theEvent.target : theEvent.srcElement;
+        var txtInput = target.value;
+        if (txtInput == "" || txtInput == null) {
+          alert("the txt is required");
+        }
+      }
+      function validateForm(evnt){
+        var theEvent = evnt ? evnt : window.event;
+        var target = theEvent.target ? theEvent.target : theEvent.srcElement;
+        var rgex = /^\d{3}[-]?\d{2}[-]\d{4}$/g;
+        var ok = rgex.exec(target.value);
+        if (!ok) {
+          alert("not an SSN")
+        }
+      }
+    </script>
+    <form id="someform" action="">
+      <p>
+        <input type="text" name="t1" id="t1"><br>
+        <input type="password" name="t2" id="t2"><br>
+        <input type="hidden" name="t3" value="hidden value"><br>
+        <textarea name="t4" cols="50" rows="10" id="xx">The Text Area!</textarea><br>
+        <input type="submit" value="submit">
+      </p>
+    </form>
+  </body>
+</html>

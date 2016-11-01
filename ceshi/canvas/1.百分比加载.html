@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>百分比加载</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #canvas {
+        border: 1px solid #eeeeee;
+      }
+      body p {
+        text-align: center;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <p>this is the first canvas</p>
+    <!--    <canvas id="canvas" width="500" height="500">
+
+        </canvas>
+        <script>
+          var canvas = document.getElementById('canvas');
+          var ctx = canvas.getContext('2d');
+          var linear = ctx.createLinearGradient(20, 0, 300, 0);
+          linear.addColorStop(0, '#ff0000');
+          linear.addColorStop(0.15, '#ff00ff');
+          linear.addColorStop(0.33, '#0000ff');
+          linear.addColorStop(0.49, '#0000ff');
+          linear.addColorStop(0.67, '#00ff00');
+          linear.addColorStop(0.84, '#ffff00');
+          linear.addColorStop(1, '#ff0000');
+          ctx.font = "30px Arial";
+          ctx.fillStyle = linear;
+          ctx.fillText("Hello world", 150, 150);
+        </script>-->
+    <canvas id="canvas1" width="500" height="500" style="background: #000;">
+
+    </canvas>
+    <script>
+      window.onload = function (){
+        var canvas1 = document.getElementById('canvas1'),
+          ctx1 = canvas1.getContext('2d'),
+          centerX = canvas1.width / 2,
+          centerY = canvas1.height / 2,
+          rad = Math.PI * 2 / 100,   //因为定义上把单位圆的一角度对应的弧长为1弧度,而单位圆的半径为1,这样单位圆的周长就是2π,其对应的角度就是360度,所以π对应的角度就是180度了.
+          speed = 1;
+        //绘制蓝色圆
+        function blueCircle(n){
+          ctx1.save();
+          ctx1.strokeStyle = "#49f"; //设置描边样式
+          ctx1.lineWidth = 5; //设置线宽
+          ctx1.beginPath(); //路径开始
+          ctx1.arc(centerX, centerY, 100, -Math.PI / 2, -Math.PI / 2 + n * rad, false); //用于绘制圆弧ctx1.arc(x坐标，y坐标，半径，起始角度，终止角度，顺时针/逆时针)
+          ctx1.stroke(); //绘制
+          ctx1.closePath(); //路径结束
+          ctx1.restore();
+        }
+
+        //绘制白色圆
+        function whiteCircle(){
+          ctx1.save();
+          ctx1.beginPath();
+          ctx1.strokeStyle = "white";
+          ctx1.arc(centerX, centerY, 100, 0, Math.PI * 2, false);
+          ctx1.stroke();
+          ctx1.closePath();
+          ctx1.restore();
+        }
+
+        //百分比文字绘制
+        function text(n){
+          ctx1.save(); //save和restore可以保证样式属性只运用于该段canvas元素
+          ctx1.strokeStyle = "#49f"; //设置描边样式
+          ctx1.font = "40px Arial"; //设置字体大小和字体
+          //绘制字体，并且指定位置
+          ctx1.strokeText(n.toFixed(0) + "%", centerX - 25, centerY + 10);
+          ctx1.stroke(); //执行绘制
+          ctx1.restore();
+        }
+
+        (function drawFrame(){
+          window.requestAnimationFrame(drawFrame, canvas1);
+          ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+          whiteCircle();
+          text(speed);
+          blueCircle(speed);
+
+          if (speed > 100) speed = 0;
+          speed += 0.1;
+        }());
+      }
+
+    </script>
+  </body>
+</html>

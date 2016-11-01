@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+/*      //访问IE中的Event对象
+      function mouseDown(){
+        var str = "X =" + window.event.screenX + "Y =" + window.event.screenY;
+        alert(str);
+      }
+      document.onmousedown = mouseDown;
+      //访问其他浏览器中Event对象
+      function mouseDown1(theEvent){
+        var str = "X =" +theEvent.screenX + "Y =" + theEvent.screenY;
+        alert(str);
+      }
+      document.onmousedown = mouseDown1;*/
+      //比较兼容的访问方式
+      function  mouseDown2(nsevent){
+        var theEvent=nsevent?nsevent:window.event;
+        var str = "X =" +theEvent.screenX + "Y =" + theEvent.screenY;
+        alert(str);
+      }
+      document.onmousedown = mouseDown2;
+    </script>
+  </body>
+</html>

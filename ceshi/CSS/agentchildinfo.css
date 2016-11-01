@@ -1,0 +1,175 @@
+html,body {
+  box-sizing: border-box;
+  min-height: 100%;
+  font-family: "微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif, "宋体";
+}
+html{font-size: 1080px; !important;}
+main {
+  box-sizing: border-box;
+  background: -webkit-linear-gradient(bottom, #5d2e95, #6253e1 20%, #8372ff 50%, #3196f5 80%, #5831c1);
+  border-radius: 8px;
+  padding: 0 .0556rem;
+}
+div.ui-content-box {
+  min-height: 100%;
+  border-top: 0.0463rem solid #5832c1;
+  border-bottom: 0.0463rem solid #5832c1;
+  border-radius: 16px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: -webkit-linear-gradient(top, #7654bb, #393387 64%, #21215e);
+  box-shadow: 0 4px 0 rgba(223, 201, 255, 0.75) inset;
+  background-clip: border-box;
+}
+div.ui-content {
+  border-radius: 14px;
+  box-sizing: border-box;
+  background-clip: border-box;
+  background: url("../../images/left-bg.png") no-repeat left top, url("../../images/right-bg.png") no-repeat right top;
+  padding: 0.2037rem 0.1852rem;
+  margin: 0 auto;
+}
+.ui-left-content {
+  margin-right: 0.1481rem;
+  width: 2.1296rem;
+  border-radius: 10px;
+  background: -webkit-linear-gradient(top, #463081, #101129);
+  box-shadow: 0 2px 4px rgba(79, 79, 222, 0.75),
+  0 -2px 4px rgba(82, 59, 130, 1);
+}
+.ui-left-content ul {
+  padding:0.1481rem 0.1111rem;
+}
+.ui-left-content ul li {
+  width: 100%;
+  margin: 0 auto 0.1111rem;
+  box-sizing: border-box;
+  border: 1px solid rgba(47, 64, 165, 1);
+  height: 0.7222rem;
+  line-height: 0.6110rem;
+  border-radius: 0.0645rem;
+  text-align: center;
+  background: -webkit-linear-gradient(top, #9cc4ff 12%, #4a93fc 50%, #3f53d2 52%, #2d69ec 88%);
+  background: linear-gradient(top, #9cc4ff 12%, #4a93fc 50%, #3f53d2 52%, #2d69ec 88%);
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.4);
+}
+.ui-left-content ul li:last-child {
+  margin-bottom: 0;
+}
+.ui-left-content ul li a {
+  box-sizing: border-box;
+  display: inline-block;
+  border-radius: 0.0625rem;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  font-weight: bold;
+  background-image: -webkit-linear-gradient(top, #fff, #90c1f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke:1px #1347ba;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif, "宋体";
+}
+
+.ui-right-content {
+  display: table-cell;
+  width: 123.1317rem;
+  margin-left:0.2963rem ;
+  box-sizing: border-box;
+  border-radius: 23px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: -webkit-linear-gradient(top, #9c6ee9, #795fce 50%, #5368be);
+}
+.ui-right-box {
+  box-sizing: border-box;
+  background: url(../../images/right-lefttop.png) no-repeat left top,
+  url(../../images/right-leftbottom.png) no-repeat left bottom,
+  url(../../images/right-righttop.png) no-repeat right top,
+  url(../../images/right-rightbottom.png) no-repeat right bottom;
+  padding: 0.0841rem;
+  border-radius: 20px;
+}
+.ui-right-box ul {
+  box-sizing: border-box;
+  padding: 0.2963rem 0.1259rem 0.1233rem;
+  background:#ebfaff;
+  border-radius: 18px;
+  border: 1px solid #abb1c5;
+}
+.ui-right-content .ui-ulbox{
+  box-sizing: border-box;
+  padding: 0.0741rem;
+  border-radius: 20px;
+  background-image: -webkit-linear-gradient(#5f4398,#49348a 30%,#181a3e);
+  background-clip: border-box;
+}
+.ui-right-box ul li {
+  box-sizing: border-box;
+  height: 0.6296rem;
+  border-bottom: 3px solid #b5c4dc;
+}
+.ui-right-box ul li:last-child {
+  height: 1.2891rem;
+  border-bottom: none;
+}
+.ui-ulbox ul li div{
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  padding-left:0.2778rem;
+  color: #295292;
+  font-weight: bold;
+  font-family: "微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif, "宋体";
+  line-height: 0.6296rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ui-ulbox ul li p{
+  width: 100%;
+  box-sizing: border-box;
+  padding-left:0.2778rem;
+  color: #295292;
+  font-weight: bold;
+  font-family: "微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif, "宋体";
+  padding-top: 0.2778rem;
+  word-break:break-all;
+}
+.font8{
+  font-size: 10px;
+}
+[data-dpr="2"] .font8{
+  font-size: 20px;
+}
+[data-dpr="3"] .font8{
+  font-size: 30px;
+}
+.font10{
+  font-size: 10px;
+}
+[data-dpr="2"] .font10{
+  font-size: 20px;
+}
+[data-dpr="3"] .font10{
+  font-size: 30px;
+}
+.font12{
+  font-size: 12px;
+}
+[data-dpr="2"] .font12{
+  font-size: 24px;
+}
+[data-dpr="3"] .font12{
+  font-size: 36px;
+}
+.font14{
+  font-size: 14px;
+}
+[data-dpr="2"] .font14{
+  font-size: 28px;
+}
+[data-dpr="3"] .font14{
+  font-size: 42px;
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="myFunction()">
+    <script>
+      function myFunction(){
+        var stateCode='NO';
+        var statePercentage=0;
+        var taxPercentage=0;
+        switch (stateCode){
+          case "MA":
+          case "NO":
+          case "EN":
+            taxPercentage=2.5;
+            statePercentage=1.5;
+            break;
+          case "MO":
+            taxPercentage=8;
+            statePercentage=2;
+            break;
+          case "XA":
+          case "MM":
+          case "XX":
+            taxPercentage=3.0;
+            statePercentage=4;
+            break;
+          default:
+              taxPercentage=10;
+            statePercentage=15;
+        }
+        alert("tax is"+" "+taxPercentage+" state is"+statePercentage)
+      }
+    </script>
+    
+  </body>
+</html>

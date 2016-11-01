@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function catchEvent(obj, event, eventHandler){
+        if (obj.addEventListener) {
+          obj.addEventListener(event, eventHandler, false)
+        }
+        else if (obj.attachEvent) {
+          event = "on" + event;
+          obj.attachEvent(event, eventHandler)
+        }
+      }
+      catchEvent(window, "load", function (){
+        catchEvent(document.forms[0], "click", colorChange)
+      });
+      function colorChange(){
+        var colors = document.forms[0].color;
+        var result = document.getElementById("result");
+        for (i = 0; i < colors.length; i++) {
+          if (colors[i].checked) {
+            var myFrame = document.getElementById("myframe");
+            myFrame.contentWindow.location.href = "sourse.php?color=" + colors[i].checked.value;
+            myFrame.onload = function (){
+              result.innerHTML = myframe.contentWindow.document.getElementById("val2").innerHTML
+            }
+          }
+        }
+      }
+    </script>
+    <div>
+      <form action="">
+        <p>
+          <input type="radio" name="color" value="red">red<br>
+          <input type="radio" name="color" value="blue">blue<br>
+        </p>
+      </form>
+    </div>
+    <iframe name="myFrame"
+            id="myFrame"
+            style="width:0;height:0;border:0;"
+            scr="sourse.php">
+    </iframe>
+    <div id="result">
+
+    </div>
+  </body>
+</html>

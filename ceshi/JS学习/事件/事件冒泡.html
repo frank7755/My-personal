@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .first {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: palevioletred;
+      }
+      .second {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: yellow;
+      }
+    </style>
+    <script>
+      window.onload = clickFunction;
+      //多元素事件冒泡行为
+      //className返回的为数组
+      function clickFunction(){
+        var D1 = document.getElementsByClassName("first");
+        var D2 = document.getElementsByClassName("second");
+        D1[0].onmousedown = function (){
+          alert("first click");
+        };
+        D2[0].onmousedown = function (){
+          alert("second click");
+        };
+        document.onmousedown = function (){
+          alert("document click");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="first">
+      <div class="second"></div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>flex布局</title>
+    <style>
+      .container{
+        background: #5d2e95;
+        display: flex;
+        display: -webkit-flex;
+        width: 400px;
+        margin: 0 auto;
+        height: 400px;
+        flex-direction: row;
+        /*flex-direction: row-reverse;横向反转*/
+        /*flex-direction: column;纵向*/
+        /*flex-direction: column-reverse;纵向反转*/
+      justify-content:space-around ;   /*弹性空间间隔为20px 则两旁预留空间为10px*/
+        /*justify-content: flex-start （弹性项目向行头紧挨着填充）| flex-end（弹性项目向行尾紧挨着填充） | center（弹性项目居中紧挨着填充。） | space-between （弹性项目平均分布在该行上）| space-around（弹性项目平均分布在该行上，两边留有一半的间隔空间）*/
+        align-items:stretch; /*（垂直方向上对齐 stretch会延伸item的高度）*/
+       flex-wrap:nowrap; /*(norwap单行，wrap为多行，wrap-reverse多行反转)*/
+     /* align-content: stretch;*/
+      }
+      .item1{
+        /*height: 100px;*/
+        width:100px;
+        background: yellowgreen;
+        /*flex:1;*/
+      }
+      .item2{
+        /*height: 100px;*/
+        width:150px;
+        background: palevioletred;
+        /*flex: 1;*/
+      }
+      .item3{
+        width:100px;
+
+        /*height: 100px;*/
+        background: cornflowerblue;
+        /*flex: 1;*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item1">item1</div>
+      <div class="item2">item2</div>
+      <div class="item3">item3</div>
+    </div>
+  </body>
+</html>

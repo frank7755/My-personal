@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/获取样式.css">
+    <title>Title</title>
+    <script>
+      window.onload = function (){
+        var div = document.getElementById("name");
+        var colorOne;
+        if (div.currentStyle) {
+          //IE
+          colorOne = div.currentStyle['color'];
+        } else if (window.getComputedStyle) {
+          //其他浏览器
+          colorOne = getComputedStyle(div, null)['color'];
+        }
+        alert(colorOne);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="name">
+      获取样式
+    </div>
+  </body>
+</html>

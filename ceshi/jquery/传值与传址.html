@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function test(y){
+        y += 2;
+        return function (){
+          return y;
+        }
+      }
+      var y = 6;
+      var ytest = test(y);
+      console.log(y); // 6
+      console.log(ytest()); // 8
+      console.log(y); // 6
+      y = 8;
+      console.log(y); // 8
+      console.log(ytest()); // 8  此时test(y)并未再次将Y值传给函数，函数并未再次执行，所以y仍然等于8
+      console.log(y); // 8
+    </script>
+  </body>
+</html>

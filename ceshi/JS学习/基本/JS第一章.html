@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>JS第一章</title>
+    <script>
+      window.onload = function (){
+
+        var optionstr = prompt("enter", "");
+        optionstr = optionstr ? optionstr : "";
+        window.open("http://www.qq.com", "test", optionstr);
+        console.log(optionstr);
+        opener.moveTo(100,100);
+      }
+    </script>
+  </head>
+  <body>
+    <p>some content</p>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      var Tune = function (title){
+        this.title = title;
+        var arr = new Array();
+        this.addPerformer = function (performer){
+          var i = arr.length;
+          console.log(arr.length);   //没有元素时，length=0,  输出  0,1,2
+          arr[i] = performer;
+          console.log(arr.length); //输出  1,2,3
+        };
+        this.listPerformers = function (){
+          var singers = "";
+          for (var i = 0; i < arr.length; i++) {
+            singers += arr[i] + "";
+          }
+          return singers;
+        }
+      };
+      window.onload = function (){
+        var song = new Tune("Hello");
+        song.addPerformer(" Me ");
+        song.addPerformer(" You");
+        song.addPerformer(" Us");
+        document.writeln("song is" + song.title);
+        document.writeln("performed by" + song.listPerformers());
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>嵌套函数和闭包</title>
+  </head>
+  <body onload="progressNest()">
+    <script>
+      function outerFnc(base){
+        var punc = "!";
+        //返回内部函数
+        return function (ext){
+          return base + ext + punc;
+        }
+      }
+      function progressNest(){
+        //创建对内部函数的访问
+        var baseString = outerFnc("hello");
+        //内部函数任然将访问外部函数的参数
+        var newString = baseString("world");
+        console.log(newString);
+
+        //再次调用
+        var anotherString = baseString("reader");
+        console.log(anotherString);
+        //创建另一个函数实例
+        var anotherbase = outerFnc("hi, ya");
+        //另一个本地字符串
+        var lastString = anotherbase("you");
+        console.log(lastString)
+
+      }
+    </script>
+  </body>
+</html>

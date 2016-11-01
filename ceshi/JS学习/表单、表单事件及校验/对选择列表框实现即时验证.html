@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>对选择列表框实现即时验证</title>
+  </head>
+  <body>
+    <script>
+      function catchEvent(evntobj, event, eventHandle){
+        if (evntobj.addEventListener) {
+          evntobj.addEventListener(event, eventHandle, false);
+          //false 表示事件处于冒泡阶段  True 表示事件处于捕获阶段
+          //evntobj为元素对象Element
+        }
+        else if (evntobj.attachEvent) {
+          event = "on" + event;
+          evntobj.attachEvent(event, eventHandle);
+        }
+      }
+      catchEvent(window, "load", setUpEvent);
+      function cancelEvent(event){
+        if (event.preventDefault) {
+          event.preventDefault();  //阻止默认事件，如a标签有链接，加上后不会跳转
+          event.stopPropagation();  //其他浏览器阻止事件冒泡
+        }
+        else {
+          event.returnValue = false;
+          event.cancelBubble = true;  //IE下阻止事件冒泡
+        }
+      }
+      function setUpEvent(){
+        catchEvent(document.getElementById("someform"), "submit", checkColor)
+      }
+      function checkColor(evnt){
+        var theEvent = evnt ? evnt : window.event;
+        var coloropts = document.getElementById("someform").getElementsByTagName("input");
+        //遍历每个Checkbox检查每个Checkbox是否被选中
+        var isCheck = false;
+        for (var i = 0; i < coloropts.length; i++) {
+          if ((coloropts[i].type == "checkbox") && (coloropts[i].checked)) {
+            isCheck = true;
+            console.log(coloropts[i].value);
+
+          }
+        }
+        if (!isCheck) {
+          alert("you must check one of the color in checkbox");
+          cancelEvent(theEvent)
+        }
+      }
+
+    </script>
+
+    <form id="someform" action="">
+      <p>
+        <input type="checkbox" name="color1" value="red">
+        <input type="checkbox" name="color1" value="blue">
+        <input type="checkbox" name="color1" value="yellow">
+        <input type="checkbox" name="color1" value="green">
+      </p>
+      <input value="submit" type="submit">
+    </form>
+  </body>
+</html>

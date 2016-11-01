@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      #scrollBox {
+        background: #000000;
+        width: 500px;
+        height: 350px;
+        margin: 80px auto 0;
+        overflow: hidden;
+      }
+      #scrollBox ul {
+        margin: 0;
+        padding: 0;
+      }
+      #scrollBox ul li {
+        color: #fff;
+        line-height: 40px;
+        list-style: none;
+        margin: 0;
+        padding: 0 0 15px;
+      }
+    </style>
+    <script>
+      window.onload = function (){
+        var Box = document.getElementById('scrollBox');
+        var con1 = document.getElementById('con1');
+        var heightLi = 55;
+        con1.innerHTML += con1.innerHTML;
+        var scrollTime;
+        Box.scrollTop=0;
+        var time = 50;
+
+        function startMove(){
+          Box.scrollTop++;
+          scrollTime=setInterval(scroll, time);
+        }
+
+        function scroll(){
+          if (Box.scrollTop % heightLi == 0) {
+            clearInterval(scrollTime);
+            setTimeout(startMove, 2000)
+          } else {
+            Box.scrollTop++;
+            if (Box.scrollTop >= con1.scrollHeight / 2) {
+              Box.scrollTop = 0;
+            }
+          }
+        }
+        setTimeout(startMove,2000);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="scrollBox">
+      <ul id="con1">
+        <li>1.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>2.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>3.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>4.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>5.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>6.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>7.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>8.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>9.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>10.dafjld;ajfl打发时间拉的屎对方立刻</li>
+        <li>11.dafjld;ajfl打发时间拉的屎对方立刻</li>
+      </ul>
+    </div>
+  </body>
+</html>

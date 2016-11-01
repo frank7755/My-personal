@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function Foo() {
+        // private var
+        var bar = 'I am bar';
+        // public var
+        this.baz = 'I am baz';
+      }
+
+      var f = new Foo;
+      console.log(f.bar); // undefined
+      console.log(f.baz); // I am baz
+    </script>
+  </body>
+</html>

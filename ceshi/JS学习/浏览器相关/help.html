@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      window.onload=function(){
+        var nmstr=opener.document.forms[0].elements[0].value;
+        document.writeln("Hello "+nmstr+"<br>");
+        document.writeln("<p><a href='http://www.qq.com' onclick='self.close(); return false' target='_blank'>close</a></p>");
+        self.moveTo(0,0);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      body {
+        height: 20000px;
+      }
+      div {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        display: none;
+      }
+      div a {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: #ff6600;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        line-height: 20px;
+      }
+      a.tar {
+        position: absolute;
+        visibility: hidden;
+        left: 0;
+        top: 0;
+        width: auto;
+      }
+    </style>
+    <script>
+      function goTop(){
+        function getScrollTop(){ //取得滚动条的竖直距离
+          return document.documentElement.scrollTop || document.body.scrollTop;
+        }
+
+        var top = document.getElementById('top');
+        var div = document.getElementById('box');
+        var distance = getScrollTop();
+        if (distance > 200) {
+          div.style.display = 'block';
+          top.onclick = function (){
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop=0;
+          }
+        } else {
+          div.style.display = 'none';
+        }
+      }
+      window.onscroll= goTop;
+    </script>
+  </head>
+  <body>
+    <img src="../../../images/2.jpg">
+    <img src="../../../images/3.jpg">
+    <!--    <a class="tar" id="top" name="top">
+    112312
+        </a>
+                                                                  方式一
+        <div>
+          <a href="#top" target="_self">回到顶部</a>
+        </div>-->
+    <!-- <div>
+   <a href="javascript:scrollTo(0,0)" id="top">回到顶部</a> 方式二
+   </div>
+   -->
+    <div id="box">
+      <a id="top" href="javascript:;">回到顶部</a>
+    </div>
+  </body>
+</html>

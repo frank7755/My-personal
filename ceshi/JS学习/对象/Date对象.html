@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="myFunction()">
+    <script>
+      var dtnow=new Date(); // 不传参数
+      var dtnow1=new Date(1997,12); // 参数 ： 年份 月份
+      var dtnow2=new Date(5999000920);  //参数为1970年到现在的毫秒数
+      var dtnow3=new Date("march 12,1990 12:24:13");  //创建日期对象
+      var dtnow4=new Date("march 12,1990");  //创建日期对象可以不要时间部分
+      var dtnow5=new Date(1995,8,12,15,30,30,30);  //创建日期对象可以传入多个表示日期的整数值
+      var dtnow6=Date.now();
+      var dtnow7=Date.parse();
+      document.write(dtnow+"<br>");
+      document.write(dtnow1+"<br>");
+      document.write(dtnow2+"<br>");
+      document.write(dtnow3+"<br>");
+      document.write(dtnow4+"<br>");
+      document.write(dtnow5+"<br>");
+      document.write(dtnow6+"<br>");
+      document.write(dtnow7+"<br>");
+
+//Date 对象的Set方法和格式化方法
+      function myFunction(){
+        var dt=new Date();
+        //Set day year month ...
+        dt.setDate(18);
+        dt.setYear(1954);
+        dt.setMonth(2); //从0开始计算
+        dt.setHours(12);
+        dt.setMinutes(12);
+//输出已格式化的日期
+        document.writeln(dt.toString()+"<br>");
+        document.writeln(dt.toLocaleString()+"<br>");
+        document.writeln(dt.toLocaleDateString()+"<br>");
+        document.writeln(dt.toLocaleTimeString()+"<br>");
+        document.writeln(dt.toUTCString()+"<br>");
+
+      }
+    </script>
+  </body>
+</html>

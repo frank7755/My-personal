@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .div1 {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+        display: inline-block;
+        background-size: 50px 50px;
+        background-color: #c16;
+        background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+        transparent 75%, transparent);
+        background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+        transparent 75%, transparent);
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+        transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+        transparent 75%, transparent);
+      }
+      .div2 {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+        display: inline-block;
+        background-color: #eee;
+        background-size: 60px 60px;
+        background-position: 0 0, 30px 30px; /* 0 0表示左上角，30 30表示右下角 */
+        background-image: -webkit-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+        -webkit-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+        background-image: -moz-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+        -moz-linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+        background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+        linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+      }
+      .div3 {
+        margin:  auto;
+        width: 200px;
+        height: 200px;
+        background: #f00;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+  </body>
+</html>

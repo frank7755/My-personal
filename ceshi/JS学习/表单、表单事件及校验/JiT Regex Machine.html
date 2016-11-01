@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      if (window.addEventListener) {
+        window.addEventListener("load", setUpEvent, false);
+      }
+      else if (window.attachEvent) {
+        window.attachEvent("onload", setUpEvent)
+      }
+      else window.onload = setUpEvent;
+      function setUpEvent(){
+        document.someform.onsubmit = validateForm();
+      }
+      function validateForm(){
+
+        var regx = new RegExp(document.someform.t1.value);
+        var ok = regx.exec(document.someform.t2.value);
+
+        if (!ok) {
+          document.someform.t3.value = "not a match"
+        }
+        else {
+          document.someform.t3.value = "match well!"
+        }
+       return false;
+      }
+    </script>
+    <form name="someform" action="">
+      regx: <input type="text" name="t1"><br>
+      <textarea name="t2" cols="50" rows="10"></textarea><br>
+      result: <input type="text" name="t3" autocomplete="off"><br>
+      <button onclick="form.submit()">submit</button>
+    </form>
+  </body>
+
+</html>

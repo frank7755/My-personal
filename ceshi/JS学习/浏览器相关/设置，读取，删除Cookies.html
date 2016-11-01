@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      window.onload = function (){
+        if (navigator.cookieEnabled) {
+          var sum = readCookie("sum");
+          if (sum) {
+            var iSum = parseInt(sum) + 1;
+            document.write("cookie count is" + iSum);
+
+          if (iSum > 5) {
+            eraseCookie("sum");
+          }else {
+            setCookie("sum", iSum);
+          }
+          }
+        } else {
+          alert("no cookie,set now!");
+          setCookie("sum", 0)
+        }
+        //将cookie设置有效期2016  0开始算日期
+        function setCookie(key, value){
+          var cookDate = new Date(2016, 6, 6, 19, 30, 13);
+
+          document.cookie = key + "=" + encodeURI(value) + "; expires=" + cookDate.toUTCString() + "; path=/";
+          //每个cookie前用;分开
+        }
+
+        function readCookie(key){
+          var cookie = document.cookie;
+          var first = cookie.indexOf(key + "=");
+          //存在cookie
+          if (first >= 0) {
+            var str = cookie.substring(first, cookie.length);
+
+            var last = str.indexOf(";");
+
+            //如果是最后一个cookie
+            if (last < 0) last = str.length;
+            //获取cookie的值
+            str = str.substring(0, last).split("=");
+            return decodeURI(str[1]);
+
+          }
+          else {
+            return null;
+          }
+        }
+        function eraseCookie(key){
+          //将有效期设置为过去，以达到删除cookie的目的
+          var cookDate = new Date(2013, 11, 11, 19, 30, 13);
+          document.cookie = key + "="+ encodeURI(value) + "; expires=" + cookDate.toUTCString() + "; path=/";
+        }
+      };
+    </script>
+  </head>
+  <body>
+   <p>paragraph line!</p>
+  </body>
+</html>

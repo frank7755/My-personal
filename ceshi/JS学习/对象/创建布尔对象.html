@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="myFunction()">
+      <script>
+        function myFunction(){
+          var Boolean1= new Boolean("false");  //Bloolean为对象类   Boolean1为对象实例
+          var Boolean2= new Boolean(0);
+          var Boolean3= new Boolean(1);
+          var Boolean4= new Boolean(false);
+          var Boolean5= new Boolean(true);
+          var Boolean6= new Boolean("")
+          document.write("<p>"+Boolean1.valueOf()+"</p>");
+          document.write("<p>"+Boolean2.valueOf()+"</p>");
+          document.write("<p>"+Boolean3.valueOf()+"</p>");
+          document.write("<p>"+Boolean4.valueOf()+"</p>");
+          document.write("<p>"+Boolean5.valueOf()+"</p>");      // valueOf 与toString()2个方法
+          document.write("<p>"+Boolean6.valueOf()+"</p>");
+        }
+      </script>
+  </body>
+</html>

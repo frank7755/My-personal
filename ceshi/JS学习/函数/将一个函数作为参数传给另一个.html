@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>将一个函数作为参数传给另一个</title>
+  </head>
+  <body onload="testFunction()">
+    <script>
+      //第三个参数作为函数调用
+      function myFunction(x,y,z){
+        alert(z(x,y));
+      }
+      function testFunction(){
+        myFunction(3,4,function(x,y){
+          return x*y;
+        });
+      }
+    </script>
+  </body>
+</html>

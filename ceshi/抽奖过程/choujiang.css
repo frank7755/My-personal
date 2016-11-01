@@ -1,0 +1,23 @@
+#text-cj{
+  font-size: 24px;
+  color: #f00;
+  width: 500px;
+  margin: 30px  auto 50px;
+  font-weight: bold;
+  text-align: center;
+}
+#btn-box{
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+#btn-box span{
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px 20px;
+  color: #fff;
+  background: cornflowerblue;
+  border-radius: 8px;
+  margin: 0 5px;
+  cursor: pointer;
+}

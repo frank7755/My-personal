@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="buildFunction()">
+    <script>
+      function buildFunction(){
+        var func = prompt("Enter Function Body:");
+        var x = prompt("Enter value of x:");
+        var y = prompt("Enter value of y:");
+        var op=new Function ("x","y",func);
+        var answer=op(x,y);
+        alert("Function is:"+func);
+        alert("x is :"+x+"y is "+y);
+        alert("the answer is:"+answer);
+      }
+    </script>
+  </body>
+</html>

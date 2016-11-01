@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      #date1 {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        padding: 0;
+        width: 200px;
+        height: 200px;
+        background: #ff0;
+        clip: rect(0, 200px, 200px, 0);
+      }
+    </style>
+    <script>
+      //定义全局变量
+      var bottom = 200;
+      var clipped = false;
+
+      document.onclick = test;
+      function test(){
+        if (clipped) {
+          unclip();
+        }
+        else {
+          clip();
+        }
+      }
+      function clip(){
+        bottom -= 20;
+        var clipx = "rect(0,200px," + bottom + "px,0)";
+        var obj = document.getElementById("date1");
+        obj.style.clip = clipx;
+        if (bottom == 40) {
+          clipped = true;
+        }
+        else {
+          setTimeout(clip, 25);
+        }
+      }
+      function unclip(){
+        bottom += 20;
+        var clipx = "rect(0,200px," + bottom + "px,0)";
+        var obj = document.getElementById("date1");
+        obj.style.clip = clipx;
+        if (bottom == 200) {
+          clipped = false;
+        }
+        else  setTimeout(unclip,25);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="date1">
+      1222222
+    </div>
+  </body>
+</html>

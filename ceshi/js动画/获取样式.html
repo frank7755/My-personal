@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      body, ul, li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      li {
+        width: 300px;
+        height: 80px;
+        background: #00aaee;
+        margin-bottom: 40px;
+      }
+      #div1 {
+        width: 200px;
+        height: 200px;
+        background: #00aaee;
+        margin: 50px auto;
+        border: 1px solid #eeeeee;
+      }
+    </style>
+    <script>
+      window.onload = function (){
+        var div = document.getElementById('div1');
+        div.onmouseover = function (){
+          startMove();
+        };
+         /*加上描边后，width不断增大，这是由于div.offsetWidth会加上描边的2px,所以width每次不断增加,所以此时需要直接获取div样式， div.style.width只能获取行内样式,而且返回值为200px
+
+          所以需要用到 parseInt()函数，解析字符串，并返回一个整数，若要获取CSS里面的样式，此时需要定义一个函数getStyle*/
+
+      };
+
+      var timer = null;
+      function startMove(){
+        clearInterval(timer);
+        var div = document.getElementById('div1');
+        timer = setInterval(function (){
+          div.style.width = parseInt(getStyle(div,'width')) - 1 + 'px';
+        }, 30)
+      }
+      function getStyle(obj,attr){
+        //针对IE浏览器
+        if(obj.currentStyle){
+          return obj.currentStyle[attr];
+        }else{
+          return getComputedStyle(obj,null)[attr];
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="div1">
+
+    </div>
+  </body>
+</html>

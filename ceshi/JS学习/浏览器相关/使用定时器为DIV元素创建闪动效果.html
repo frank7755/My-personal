@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+      window.onload = function (){
+        document.getElementById("block").style.backgroundColor = "#ffffff";
+        setTimeout(changeColor(255), 300)
+      };
+      function changeColor(newcolor){
+        var colorval = newcolor.toString(16);
+        if (colorval.length < 2) {
+          colorval = "0" + colorval;
+        }
+        var colorstr = "#ffff" + colorval;
+        var blcokdiv = document.getElementById("block");
+        blcokdiv.style.backgroundColor = colorstr;
+        if (newcolor > 0) {
+          newcolor -= 5;
+          setTimeout("changeColor(" + newcolor + ")", 150);
+        }
+        console.log(newcolor);
+      }
+    </script>
+  </head>
+  <body>
+
+    <div id="block" style="width: 400px; height: 400px; text-align: center; line-height: 400px; border: 1px solid #cc0000;">
+      <h2>Hello</h2>
+    </div>
+  </body>
+</html>

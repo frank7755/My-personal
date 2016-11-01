@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>display:inline-block测试</title>
+    <style>
+      ul,li{
+        margin: 0;
+        padding:0;
+        list-style: none;
+      }
+      ul{
+        width: 1000px;
+        margin: 0 auto;
+        line-height: 0;
+        font-size: 0;
+        word-spacing: 0;
+      }
+      li{
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        vertical-align: top;
+        width: 100px;
+        height: 100px;
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </body>
+</html>

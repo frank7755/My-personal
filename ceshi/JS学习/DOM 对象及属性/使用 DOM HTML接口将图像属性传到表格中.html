@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      *,body{
+        margin:0;
+        padding: 0;
+      }
+      body{
+        background: url("../../../images/1.jpg") repeat-y center;
+      }
+      table {
+        width: 50%;
+        margin: 0 auto;
+        border: 1px solid #e8e8e8;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      table th, table td {
+        border: 1px solid #e8e8e8;
+      }
+    </style>
+    <script>
+      window.onload = function (){
+        var tab=document.getElementById("tb1");
+        var img=document.images[0];//不计算背景图片
+        img.vspace="10";
+        tab.cellPadding="5px";
+        //为每个属性添加一个表格行
+        var row=tab.insertRow(-1);
+        var row1=tab.insertRow(-1);
+        //-1表示在表格最后插入行，0表示在最前插入，正数表示在第N行插入，但是不能超过行数
+        //创建2个表格单元格
+        var cell1=row.insertCell(0);
+        var cell2=row.insertCell(1);
+        var cell3=row1.insertCell(0);
+        var cell4=row1.insertCell(1);
+
+        //创建文本值
+        var text=document.createTextNode("src");
+        var text1=document.createTextNode("title");
+        var textAttr=document.createTextNode(img.src);
+        var textAttr1=document.createTextNode(img.title);
+        //将文本放入表格
+        cell1.appendChild(text);
+        cell3.appendChild(text1);
+        cell2.appendChild(textAttr);
+        cell4.appendChild(textAttr1);
+      }
+    </script>
+  </head>
+  <body>
+    <p><img src="../../../images/2.jpg" alt="图片" title="还是图片" id="img-test"></p>
+    <table id="tb1">
+      <tr>
+        <th>Attr</th>
+        <th>value</th>
+      </tr>
+      <tr>
+        <td>1323</td>
+        <td>132</td>
+      </tr>
+    </table>
+  </body>
+</html>

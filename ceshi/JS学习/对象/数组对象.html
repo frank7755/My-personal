@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="pushPop()">
+    <script>
+      //基于 Array方法的FIFO队列
+      function pushPop(){
+        var arr = new Array();
+        arr.push("Apple");
+        arr.push("banana");  //push向数组末尾添加元素  /输出 Apple banana pear  返回新的数组长度
+        var ln = arr.push("pear");
+        for (var i = 0; i < ln; i++) {
+          document.write(arr[i] + "<br>")
+        }
+        document.write("length is " + arr.length + "<br>");
+        //使用Shift移除元素
+        for (var j = 0; j < ln; j++) {
+          document.write(arr.shift() + "<br>");//shift删除并返回数组的第一个添加元素  头部删除 依次删除apple banana pear
+          document.write("length now is " + arr.length + "<br>");
+        }
+
+        //使用unshift方法添加元素
+        var arr1 = new Array();
+        arr1.unshift("learn");
+        arr1.unshift("Javascript");  //往数组头部添加元素，类似堆栈效果，新元素将旧的推到后面  输出/script javascript  learn 返回数组长度
+        var ln1=arr1.unshift("Script");
+        for (var k = 0; k < ln1; k++) {
+          document.write(arr1[k] + "<br>")
+        }
+        document.write("length is " + arr1.length + "<br>");
+
+        //使用pop方法移除元素
+        for (var l = 0; l < ln1; l++) {
+          document.write(arr1.pop() + "<br>"); //pop删除并返回数组第一个添加的元素  尾部删除 依次删除learn javascript script
+          document.write("length now is " + arr1.length + "<br>")
+        }
+      }
+    </script>
+  </body>
+</html>

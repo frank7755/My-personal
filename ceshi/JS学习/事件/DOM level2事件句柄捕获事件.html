@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+      function cascadeDown(evnt){
+        alert("capturing" + this);
+        console.log(evnt.type);
+      }
+      function bubbleUp(evnt){
+        alert("bubbing" + this)
+      }
+      //object.addEventListener('Event',eventFunction,boolean)  True代表捕获，false代表冒泡
+      //object.attachEvent('onclick',eventFunction)  For IE
+      window.onload = setUp;
+      function setUp(evnt){
+        //事件捕获
+        document.addEventListener('click', cascadeDown, true);
+        document.forms[0].addEventListener('click', cascadeDown, true);
+        document.forms[0].elements[0].addEventListener('click', cascadeDown, true);
+        //事件冒泡
+        document.addEventListener('click', bubbleUp, false);
+        document.forms[0].addEventListener('click', bubbleUp, false);
+        document.forms[0].elements[0].addEventListener('click', bubbleUp, false)
+      }
+    </script>
+  </head>
+  <body>
+    <form style="color: #c00; background: chocolate; width: 100px; height: 40px; text-align: center;line-height: 40px;" action="">
+      <input type="submit" value="submit">
+    </form>
+  </body>
+</html>

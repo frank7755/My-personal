@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>函数和递归</title>
+  </head>
+  <body onload="runRecursion()" ;>
+    <div style="width: 100px; height: 100px;">
+
+    </div>
+    <!--一个将调用函数自身的叫做递归函数。-->
+    <script>
+      function runRecursion(){
+        var addNumber = function sumNumber(numberArray, indexVal, resultArray){
+          //递归结束检查
+          if (indexVal == numberArray.length)
+            return resultArray;
+          //完成数值累加
+          resultArray[0] += Number(numberArray[indexVal]);
+          if (resultArray[1].length > 0) {
+            resultArray[1] += " and ";
+          }
+          resultArray[1] += numberArray[indexVal].toString();
+          //索引值自增1
+          indexVal++;
+          //再次返回该函数并执行结果
+          return sumNumber(numberArray, indexVal, resultArray);
+        };
+        var numberArray = ['1', '35.4', '-14', '44', '0.5'];
+        var resultArray = new Array(0, '');
+        var result = addNumber(numberArray, 0, resultArray);
+        document.writeln(result[0] + "<br>");
+        document.writeln(result[1] + "<br>");
+        document.writeln(resultArray + "<br>");
+      }
+    </script>
+  </body>
+</html>

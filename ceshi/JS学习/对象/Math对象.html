@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="myFunction()">
+    <script>
+      function myFunction(){
+        var arr = new Array(5);
+        arr[0] = "one";
+        arr[1] = "two";
+        arr[2] = "three";
+        arr[3] = "four";
+        arr[4] = "five";
+        var rvalue=Math.random();
+        var rvalue=rvalue*5;
+        var y= Math.floor(rvalue);
+        document.write(arr[y]);
+      }
+    </script>
+  </body>
+</html>

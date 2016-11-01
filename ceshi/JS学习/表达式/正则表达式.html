@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body onload="myFunction(); myFunction1();myFunction2();">
+    i表示强制匹配忽略大小写，g表示全局匹配
+    <script>
+
+      function myFunction(){
+        var test = /Javascript learn/;
+        var str = test.test("Javascript learn");// test()判断字符串是否匹配正则表达式  区分大小写
+        document.write(str); //返回True
+        var test1 = /Javascript learn/i;  //不区分大小写
+        var str1 = test1.test("javascript learn");
+        document.write(str1); //返回True;
+      }
+      function myFunction1(){
+        var regexp = new RegExp("s+", "g");// s为匹配项，+表示至少出现一次，g表示全局匹配
+        var regexp1 = new RegExp("JS*", "ig");//ig表示忽略大小写全局匹配 *表示任何数量的S
+        var str = "cfdsJS*(&js12 888JS)";
+        var result = regexp1.exec(str); //exec（）在字符串中查找  返回一个数组 数组为当前项  如果未找到匹配则返回Null
+        while (result) {
+          document.writeln(result[0]);
+          document.writeln("next match start at" + regexp1.lastIndex + "<br>");  //lastIndex表示下次匹配的起始位置 ，具有全局匹配g的表达式才能使用
+          result = regexp1.exec(str);
+          /*输出为next match start at 6
+           next match start at 11
+           next match start at19*/
+        }
+      }
+
+      function myFunction2(){
+        document.writeln("<br>");
+        var re = /(ds)+(j+s)/ig;
+        var str = "cfdsJS*(&dsjjjsYJSjs 888dsdsJS)";
+        var resultArray = re.exec(str);
+        while (resultArray) {
+          document.writeln(resultArray[0]);//exec（）在字符串中查找  返回一个数组 数组为当前项  如果未找到匹配则返回Null
+          document.writeln("next match start at " + re.lastIndex + "<br/>");
+          for (var i = 0; i < resultArray.length; i++) {
+            document.writeln("substring of " + resultArray[i] + "<br/>")
+          }
+          document.writeln("<br>");
+          resultArray = re.exec(str);
+        }
+      }
+    </script>
+  </body>
+</html>
