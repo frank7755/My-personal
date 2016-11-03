@@ -8,6 +8,7 @@ var courseData = [];
 function filterChapters(html){
   var $ = cheerio.load(html);
   var cheapers = $('.chapter');
+  // 希望的数据类型模式
   // [
   // {
   //   cheaperTitle: '' ,
@@ -15,7 +16,6 @@ function filterChapters(html){
   //     title:'',
   //     id:''
   //   ]
-  //
   // }
   //   ]
   cheapers.each(function (item){
@@ -42,10 +42,11 @@ function filterChapters(html){
 }
 function printCourseInfo(courseData){
   courseData.forEach(function (item){
+    //item为当前项
     var cheaperTitle=item.cheaperTitle;
-    console.log(cheaperTitle+'\n');
+    console.log(cheaperTitle);
     item.videos.forEach(function (video){
-      console.log('【'+video.id+'】' + video.title +'\n');
+      console.log('【'+video.id+'】' + video.title );
     })
   })
 }
@@ -53,7 +54,7 @@ http.get(url, function (res){
   var html = '';
   res.on('data', function (data){
     html += data
-  })
+  });
   res.on('end', function (){
     filterChapters(html);
     printCourseInfo(courseData);
