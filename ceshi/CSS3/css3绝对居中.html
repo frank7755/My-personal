@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .box{
+        width:400px;
+        height: 400px;
+        background: yellow;
+        position: absolute;
+      }
+      .center-item{
+        background: red;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      ;
+      }
+      .box1{
+        left: 420px;
+        width:400px;
+        height: 400px;
+        background: green;
+        position: relative;
+      }
+      .center-item1{
+        background: blueviolet;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      .box2{
+        top: 8px;
+        left: 840px;
+        width:400px;
+        height: 400px;
+        background: cornflowerblue;
+        text-align: center;
+        position: absolute;
+      }
+      .box2 i{
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+      }
+      .center-item2{
+        background: purple;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="center-item">
+
+      </div>
+    </div>
+    <div class="box1">
+      <div class="center-item1">
+
+      </div>
+    </div>
+    <div class="box2">
+      <i></i>
+      <div class="center-item2">
+
+      </div>
+    </div>
+  </body>
+</html>
