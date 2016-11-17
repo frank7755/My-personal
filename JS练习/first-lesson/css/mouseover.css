@@ -1,0 +1,17 @@
+#div{
+    background: black;
+    color: #fff;
+    font: 14px/1.5 'Segoe UI Semibold';
+    border: 10px solid black;
+    width: 200px;
+    padding: 10px;
+    height: 200px;
+    margin: 0 auto;
+}
+#div.active{
+    background: white;
+    width: 200px;
+    height: 200px;
+    border: 10px solid red;
+    color: red;
+}

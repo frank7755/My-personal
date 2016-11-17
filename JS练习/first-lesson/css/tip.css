@@ -1,0 +1,17 @@
+.box{
+    width: 200px;
+    margin: 0 auto;
+}
+label input{
+    display: inline-block;
+    width: 15px;
+    height:15px;
+    border: 1px solid #eeeeee;
+}
+#div{
+    padding: 5px;
+    margin-top: 5px;
+    background: #ffefa4;
+    border: 1px solid #f90;
+    display: none;
+}

@@ -1,0 +1,14 @@
+body{
+    text-align: center;
+}
+#box{
+    display: flex;
+    width: 500px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+#box div{
+    background: #000000;
+    width: 100px;
+    height: 100px;
+}

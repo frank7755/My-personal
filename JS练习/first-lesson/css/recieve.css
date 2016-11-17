@@ -1,0 +1,11 @@
+body,p{text-align: center}
+input{
+    line-height: 30px;
+    color: #999;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+input[type='button']{
+    color: #000;
+    background: #f2f2f2;
+}

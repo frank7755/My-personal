@@ -1,0 +1,14 @@
+#btn-box{
+    text-align: center;
+}
+#btn-box button{
+    text-align: center;
+    display: inline-block;
+    margin: 10px 20px;
+}
+#change-div{
+    width: 200px;
+    height: 200px;
+    background: cornflowerblue;
+    margin: 0 auto;
+}
