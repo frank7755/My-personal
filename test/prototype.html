@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+  </head>
+  <body>
+<!--    <script>
+      function Person(){
+
+      }
+      Person.prototype.name='frank';
+      Person.prototype.age=29;
+      Person.prototype.job='soft';
+      Person.prototype.sayName=function (){
+        console.log(this.name)
+      }
+      var keys=Object.keys(Person.prototype);
+      console.log(keys);
+      var p1=new Person();
+      p1.name='Rob';
+      p1.age=31;
+      var p1Keys=Object.keys(p1);
+      console.log(p1Keys);
+    </script>-->
+   <!-- <script>
+      function Person(){
+
+      }
+      var friend=new Person();
+      // 构造函数在不返回值的情况下默认 返回新的对象实例 ，所以此时会报错
+
+      Person.prototype={
+        name:'bob',
+        age:31,
+        job:'dajiangyou',
+        sayName:function (){
+          console.log(this.name)
+        }
+      }
+
+      friend.sayName();
+    </script>-->
+
+    <script>
+      function specialArray(){
+        //创建数组
+        var values=new Array();
+        //添加值
+        values.push.apply(values,arguments);
+        //添加方法
+        values.toPipedString=function (){
+          return  this.join("|")
+        }
+        return values;
+      }
+      var colors=new specialArray('red','blue','green');
+      console.log(colors.toPipedString());
+    </script>
+  </body>
+</html>

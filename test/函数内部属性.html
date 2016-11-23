@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function factiorial(num){
+        if(num<=1){
+          return 1
+        }else {
+          return num*factiorial(num-1)
+        }
+      }
+
+      var tur=factiorial;
+      factiorial=function (){
+        return 0;
+      }
+      console.log(factiorial(5));
+      console.log(tur(5));
+
+     // 改变上面函数
+
+      function factor(num){
+        if(num<=1){
+          return 1
+        }else {
+          return num*arguments.callee(num-1)
+        }
+      }
+      //callee是一个指针，指向拥有arguements的函数。 下面tur1指向factor指针。
+      var tur1=factor;
+      factor=function (){
+        return 0;
+      }
+      console.log(factiorial(5));
+      console.log(tur1(5));
+    </script>
+  </body>
+</html>
