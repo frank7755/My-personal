@@ -1,0 +1,11 @@
+#main {
+    width: 500px;
+    margin: 0 auto;
+}
+#main div {
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-indent: 2em;
+    cursor: pointer;
+}

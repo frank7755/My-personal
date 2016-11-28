@@ -1,0 +1,28 @@
+#outer {
+    width: 300px;
+    margin: 0 auto;
+}
+p {
+    margin-bottom: 10px;
+}
+label {
+    width: 5em;
+    display: inline-block;
+    text-align: right;
+}
+input {
+    padding: 3px;
+    font-family: inherit;
+    border: 1px solid #ccc;
+}
+button {
+    margin-right: 5px;
+}
+#div1 {
+    color: #fff;
+    width: 180px;
+    height: 180px;
+    background: #000;
+    margin: 0 auto;
+    padding: 10px;
+}

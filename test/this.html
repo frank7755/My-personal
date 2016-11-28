@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      var myObject= {
+        num: 2,
+        add: function(){
+          this.num=3;
+          (function(){
+            console.log(this);
+            this.num=4;
+          })();
+          console.log(this.num)
+        }
+      }
+      myObject.add();
+      //在Javascript中，this关键字永远都指向函数（方法）的所有者。
+      //aaa.fun才表示调用
+    </script>
+    
+  </body>
+</html>
