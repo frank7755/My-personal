@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      body { font: 12px/1.5 arial; text-align: center; }
+      .f-text { width: 50px; border: 1px solid #ccc; background: #f0f0f0; font-family: inherit; padding: 3px; }
+      span { color: green; padding-right: 10px; font-weight: 700; }
+      strong { padding: 0 10px; }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+        margin: 0;
+      }
+      input[type='button'] {
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" class="f-text"><strong>vs</strong><input type="text" class="f-text"><input type="button" value="最大的数是 »" class="f-btn"><span></span>
+    <script>
+      window.onload = function (){
+        var oInputs = document.getElementsByTagName('input');
+        var oSpan = document.getElementsByTagName('span')[0];
+        for (var i = 0; i < oInputs.length - 1; i++) {
+          oInputs[i].onkeyup = function (){
+            this.value = this.value.replace(/[^\d]/, "")
+          }
+        }
+        oInputs[2].onclick = function (){
+          if (oInputs[0].value == '' || oInputs[1].value == '') {
+            alert('请输入数字')
+          }
+          oSpan.innerText = Math.max(parseInt(oInputs[0].value), parseInt(oInputs[1].value))
+        }
+      }
+    </script>
+  </body>
+</html>

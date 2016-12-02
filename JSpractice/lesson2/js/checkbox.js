@@ -26,6 +26,7 @@ window.onload = function (){
     }
     isCheckAll();
   }
+  // 反选
   oA.onclick = function (){
       for(var i=0;i<inputs.length;i++){
         inputs[i].checked=!inputs[i].checked;
