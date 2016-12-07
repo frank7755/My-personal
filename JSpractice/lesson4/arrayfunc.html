@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      div { color: green; padding: 10px 15px; margin: 12px 0; background: #f0f0f0; border: 1px dotted #333; font: 12px/1.5 Courier New; word-wrap: break-word; }
+    </style>
+  </head>
+  <body>
+    <div>January(1),February(2),March(3),April(4),May(5),June(6),July(7),Aguest(8),September(9),October(10),November(11),December(12)</div>
+    <input type="button" value="删除January(1)">
+    <input type="button" value="删除December(12)">
+    <div>0,1,2,3,4,5,6,7,8,9</div>
+    <input type="button" value="复制">
+    <input type="button" value="还原">
+    <div>red,green,blue,white,yellow,black,brown</div>
+    <input type="button" value="还原">
+    <input type="button" value="删除前三项">
+    <input type="button" value="删除第二至三项">
+    <input type="button" value="在第二项后插入(orange, purple)">
+    <input type="button" value="替换第二项和第三项">
+  </body>
+  <script>
+    var divs = document.getElementsByTagName('div');
+    var oInputs = document.getElementsByTagName('input');
+    var arr0 = arr1 = arr2 = [];
+    var flag = flag1 = 1;
+    var str0 = divs[0].innerText;
+    var str1 = divs[1].innerText;
+    var str2 = divs[2].innerText;
+    var shifted;
+    var poped;
+
+    arr0 = str0.split(',');
+    arr1 = str1.split(',');
+    arr2 = str2.split(',');
+
+    for (var i = 0; i < oInputs.length; i++) {
+
+      switch (i) {
+        case 0:
+
+          oInputs[i].onclick = function (){
+            if (flag) {
+              shifted = arr0.shift();
+
+              flag = 0;
+
+              divs[0].innerHTML = arr0.toString();
+            } else {
+              flag = 1;
+
+              arr0.unshift(shifted);
+
+              divs[0].innerHTML = arr0.toString();
+            }
+          };
+          break;
+        case 1:
+          oInputs[i].onclick = function (){
+            if (flag1) {
+              poped = arr0.pop();
+
+              flag1 = 0;
+
+              divs[0].innerHTML = arr0.toString();
+            } else {
+              flag1 = 1;
+
+              arr0.push(poped);
+
+              divs[0].innerHTML = arr0.toString();
+            }
+          };
+          break;
+        case 2:
+          oInputs[i].onclick = function (){
+            var sliced = arr1.slice();
+            Array.prototype.push.apply(arr1, sliced).toString();
+            divs[1].innerHTML = arr1.join();
+          }
+          break;
+        case 3:
+          oInputs[i].onclick = function (){
+            arr1.length = 10;
+            divs[1].innerHTML = arr1.join();
+          }
+          break;
+        case 4:
+          oInputs[i].onclick = function (){
+            arr2 = ["red", "green", "blue", "white", "yellow", "black", "brown"];
+            divs[2].innerHTML = arr2.join();
+          }
+          break;
+        case 5:
+          oInputs[i].onclick = function (){
+            //0开始，删除3个
+            arr2.splice(0, 3)
+            divs[2].innerHTML = arr2.join();
+          }
+          break;
+        case 6:
+          oInputs[i].onclick = function (){
+            //1开始，删除2个
+            arr2.splice(1, 2);
+            divs[2].innerHTML = arr2.join();
+          }
+          break;
+        case 7:
+          oInputs[i].onclick = function (){
+            arr2.splice(2, 0, 'orange', 'purple');
+            divs[2].innerHTML = arr2.join();
+          }
+          break;
+        case 8:
+          oInputs[i].onclick=function (){
+              arr2.splice(1,2,'#009900','#0000ff');
+            divs[2].innerHTML=arr2.join();
+          }
+          break;
+        default:
+          break;
+      }
+    }
+
+  </script>
+</html>

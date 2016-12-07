@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/css.js"></script>
+<!--    <script>
+      function css(obj,attr,value){
+        switch (arguments.length){
+          case 2:
+            if(typeof arguments[1]=='object'){
+              for(var i in attr)obj.style[i]=attr[i];
+            }else {
+              return obj.currentStyle[attr]?obj.currentStyle[attr]:obj.getComputedStyle(obj,null)[attr]
+            }
+            break;
+          case 3:
+            //三个参数，单一属性设置
+            obj.style[attr]=value;
+            break;
+          default:
+            alert('参数错误');
+        }
+      }
+    </script>-->
+  </head>
+  <body>
+    <div id="box" style="width: 400px; height: 200px; border-color: rgb(255, 102, 0); background-color: rgb(254, 244, 235);">
+      <input type="button" value="Get Style" style="background-color: rgb(255, 102, 0);"><input type="button" value="Set Style" style="background-color: rgb(255, 102, 0);"><input type="button" value="Default Style" style="background-color: rgb(255, 102, 0);">
+    </div>
+  </body>
+</html>
