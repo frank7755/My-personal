@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+      body, div, h2, h3, ul, li, p { margin: 0; padding: 0; }
+      a { text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      ul { list-style-type: none; }
+      body { color: #333; background: #3c3a3b; font: 12px/1.5 \5b8b\4f53; }
+      #msgBox { width: 500px; background: #fff; border-radius: 5px; margin: 10px auto; padding-top: 10px; }
+      #msgBox form h2 { font-weight: 400; font: 400 18px/1.5 \5fae\8f6f\96c5\9ed1; }
+      #msgBox form { background: url(img/boxBG.jpg) repeat-x 0 bottom; padding: 0 20px 15px; }
+      #userName, #conBox { color: #777; border: 1px solid #d0d0d0; border-radius: 6px; background: #fff url(img/inputBG.png) repeat-x; padding: 3px 5px; font: 14px/1.5 arial; }
+      #userName.active, #conBox.active { border: 1px solid #7abb2c; }
+      #userName { height: 20px; }
+      #conBox { width: 448px; resize: none; height: 65px; overflow: auto; }
+      #msgBox form div { position: relative; color: #999; margin-top: 10px; }
+      #msgBox img { border-radius: 3px; }
+      #face { position: absolute; top: 0; left: 172px; }
+      #face img { width: 30px; height: 30px; cursor: pointer; margin-right: 6px; opacity: 0.5; filter: alpha(opacity=50); }
+      #face img.hover, #face img.current { width: 28px; height: 28px; border: 1px solid #f60; opacity: 1; filter: alpha(opacity=100); }
+      #sendBtn { border: 0; width: 112px; height: 30px; cursor: pointer; margin-left: 10px; background: url(img/btn.png) no-repeat; }
+      #sendBtn.hover { background-position: 0 -30px; }
+      #msgBox form .maxNum { font: 26px/30px Georgia, Tahoma, Arial; padding: 0 5px; }
+      #msgBox .list { padding: 10px; }
+      #msgBox .list h3 { position: relative; height: 33px; font-size: 14px; font-weight: 400; background: #e3eaec; border: 1px solid #dee4e7; }
+      #msgBox .list h3 span { position: absolute; left: 6px; top: 6px; background: #fff; line-height: 28px; display: inline-block; padding: 0 15px; }
+      #msgBox .list ul { overflow: hidden; zoom: 1; }
+      #msgBox .list ul li { float: left; clear: both; width: 100%; border-bottom: 1px dashed #d8d8d8; padding: 10px 0; background: #fff; overflow: hidden; }
+      #msgBox .list ul li.hover { background: #f5f5f5; }
+      #msgBox .list .userPic { float: left; width: 50px; height: 50px; display: inline; margin-left: 10px; border: 1px solid #ccc; border-radius: 3px; }
+      #msgBox .list .content { float: left; width: 400px; font-size: 14px; margin-left: 10px; font-family: arial; word-wrap: break-word; }
+      #msgBox .list .userName { display: inline; padding-right: 5px; }
+      #msgBox .list .userName a { color: #2b4a78; }
+      #msgBox .list .msgInfo { display: inline; word-wrap: break-word; }
+      #msgBox .list .times { color: #889db6; font: 12px/18px arial; margin-top: 5px; overflow: hidden; zoom: 1; }
+      #msgBox .list .times span { float: left; }
+      #msgBox .list .times a { float: right; color: #889db6; display: none; }
+      .tr { overflow: hidden; zoom: 1; }
+      .tr p { float: right; line-height: 30px; }
+      .tr * { float: left; }
+    </style>
+  </head>
+  <body>
+    <div id="msgBox">
+      <form>
+        <h2>来 , 说说你在做什么 , 想什么</h2>
+        <div>
+          <input id="userName" class="f-text">
+          <p id="face">
+            <img src="img/face1.gif" class="current"><img src="img/face2.gif"><img src="img/face3.gif"><img src="img/face4.gif"><img src="img/face5.gif"><img src="img/face6.gif"><img src="img/face7.gif"><img src="img/face8.gif">
+          </p>
+        </div>
+        <div><textarea id="conBox" class="f-text"></textarea></div>
+        <div class="tr">
+          <p>
+            <span class="countTxt">还能输入</span><strong class="maxNum">140</strong><span>个字</span>
+            <input id="sendBtn" type="button" value="" title="快捷键 Ctrl+Enter">
+          </p>
+        </div>
+      </form>
+      <div class="list">
+        <h3><span>大家在说</span></h3>
+        <ul>
+          <li>
+            <div class="userPic"><img src="img/face.gif"></div>
+            <div class="content">
+              <div class="userName"><a href="javascript:;">日丶久生情</a>:</div>
+              <div class="msgInfo">新增删除广播功能。</div>
+              <div class="times"><span>07月05日 15:14</span><a class="del" href="javascript:;">删除</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="userPic"><img src="img/face.gif"></div>
+            <div class="content">
+              <div class="userName"><a href="javascript:;">日丶久生情</a>:</div>
+              <div class="msgInfo">新增Ctrl+Enter快捷键发送广播。</div>
+              <div class="times"><span>07月05日 12:20</span><a class="del" href="javascript:;">删除</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="userPic"><img src="img/face.gif"></div>
+            <div class="content">
+              <div class="userName"><a href="javascript:;">日丶久生情</a>:</div>
+              <div class="msgInfo">新增选择头像功能。</div>
+              <div class="times"><span>07月05日 12:08</span><a class="del" href="javascript:;">删除</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="userPic"><img src="img/face.gif"></div>
+            <div class="content">
+              <div class="userName"><a href="javascript:;">日丶久生情</a>:</div>
+              <div class="msgInfo">增加了记录广播时间的功能。</div>
+              <div class="times"><span>07月04日 16:55</span><a class="del" href="javascript:;">删除</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="userPic"><img src="img/face.gif"></div>
+            <div class="content">
+              <div class="userName"><a href="javascript:;">日丶久生情</a>:</div>
+              <div class="msgInfo">增加了输入字符检测功能，英文/半角为半个字符，汉字/全角为一个字符。</div>
+              <div class="times"><span>07月04日 08:30</span><a class="del" href="javascript:;">删除</a></div>
+            </div>
+          </li>
+          <li>
+            <div class="userPic"><img src="img/face.gif"></div>
+            <div class="content">
+              <div class="userName"><a href="javascript:;">日丶久生情</a>:</div>
+              <div class="msgInfo">仿腾讯微博效果，欢迎大家测试！</div>
+              <div class="times"><span>07月03日 20:19</span><a class="del" href="javascript:;">删除</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      var oSend = document.getElementById('sendBtn');
+      var oBox = document.getElementById('msgBox');
+      var list = getByclass('list', 'msgBox')[0];
+      var lis = list.getElementsByTagName('li');
+      var faceBox = document.getElementById('face');
+      var imgs = faceBox.getElementsByTagName('img');
+      var del = getByclass('del', 'msgBox');
+      var oUl = list.getElementsByTagName('ul')[0];
+      var src = '';
+      var names = document.getElementById('userName');
+      var con = document.getElementById('conBox');
+      var user;
+      var content;
+
+      for (var i = 0; i < imgs.length; i++) {
+        imgs[i].onmouseover = function (){
+          if (this.className != 'current')
+            this.className = 'hover';
+        };
+        imgs[i].onmouseout = function (){
+          if (this.className != 'current') this.className = '';
+        };
+        imgs[i].onclick = function (){
+          for (var j = 0; j < imgs.length; j++) {
+            imgs[j].className = '';
+          }
+          this.className = 'current';
+          src = this.getAttribute('src');
+        }
+      }
+      if (src == '') {
+        src = 'img/face1.gif';
+      }
+
+      for (var i = 0; i < lis.length; i++) {
+
+        lis[i].index = i;
+        lis[i].onmouseover = function (){
+          this.className = 'hover';
+          del[this.index].style.display = 'block';
+        };
+        lis[i].onmouseout = function (){
+          this.className = '';
+          del[this.index].style.display = 'none';
+        }
+      }
+
+      //删除广播
+
+      for (var i = 0; i < del.length; i++) {
+
+        /*  del[i].li = lis[i];
+         del[i].onclick = function (){
+
+         //          console.log
+         oUl.removeChild(this.li);
+
+
+         }*/
+        //方法二：
+        del[i].onclick = function (){
+          var parent = this.parentNode.parentNode.parentNode;
+          //保存初始高度
+          var iHeight = parent.offsetHeight;
+
+          var alpha = 100;
+
+          var timer = setInterval(function (){
+            css(parent, 'opacity', alpha += -10);
+            if (alpha < 10) {
+              clearInterval(timer);
+              timer = setInterval(function (){
+                iHeight += -10;
+                if (iHeight < 0) {
+                  iHeight = 0;
+                }
+                css(parent, 'height', iHeight + 'px');
+                if (iHeight == 0) {
+                  clearInterval(timer);
+                  oUl.removeChild(parent);
+                }
+              }, 30)
+            }
+          }, 30)
+        }
+      }
+
+      //发送广播
+      oSend.onclick = function (){
+        user = names.value;
+        content = con.value;
+        send();
+      };
+
+      document.onkeyup = function (event){
+        event = event || window.event;
+        if (event.keyCode == 13 && event.ctrlKey) {
+          user = names.value;
+          content = con.value;
+          send();
+        }
+      };
+
+      //再次抓取添加后的对象
+      function freash(){
+        var list = getByclass('list', 'msgBox')[0];
+        var lis = list.getElementsByTagName('li');
+        var del = getByclass('del', 'msgBox');
+
+        for (var i = 0; i < lis.length; i++) {
+
+          lis[i].index = i;
+          lis[i].onmouseover = function (){
+            this.className = 'hover';
+            del[this.index].style.display = 'block';
+          };
+          lis[i].onmouseout = function (){
+            this.className = '';
+            del[this.index].style.display = 'none';
+          }
+        }
+
+        for (var i = 0; i < del.length; i++) {
+
+          /*  del[i].li = lis[i];
+           del[i].onclick = function (){
+
+           //          console.log
+           oUl.removeChild(this.li);
+
+
+           }*/
+          //方法二：
+          del[i].onclick = function (){
+            var parent = this.parentNode.parentNode.parentNode;
+            //保存初始高度
+            var iHeight = parent.offsetHeight;
+
+            var alpha = 100;
+
+            var timer = setInterval(function (){
+              css(parent, 'opacity', alpha += -10);
+              if (alpha < 10) {
+                clearInterval(timer);
+                timer = setInterval(function (){
+                  iHeight += -10;
+                  if (iHeight < 0) {
+                    iHeight = 0;
+                  }
+                  css(parent, 'height', iHeight + 'px');
+                  if (iHeight == 0) {
+                    clearInterval(timer);
+                    oUl.removeChild(parent);
+                  }
+                }, 30)
+              }
+            }, 30)
+          }
+        }
+
+        for (var i = 0; i < lis.length; i++) {
+
+          lis[i].index = i;
+          lis[i].onmouseover = function (){
+            this.className = 'hover';
+            del[this.index].style.display = 'block';
+          };
+          lis[i].onmouseout = function (){
+            this.className = '';
+            del[this.index].style.display = 'none';
+          }
+        }
+
+        names.value = '';
+        con.value = '';
+      }
+
+
+      con.onkeyup=function (){
+        maxWords();
+      };
+      con.onfocus=function (){
+        maxWords();
+      };
+      con.onchange=function (){
+        maxWords();
+      };
+      var maxNum = getByclass('maxNum', 'msgBox')[0];
+
+      function maxWords(){
+        var len=con.value.length;
+
+        if(con.value==''){
+            con.length=0;
+        }else {
+          maxNum.innerText = 140 - len;
+          if(parseInt(maxNum.innerText)<=0){
+            maxNum.innerText=0;
+            con.value=con.value.substring(0,140);
+          }
+        }
+      }
+      maxWords();
+      //消息发送
+      function send(){
+        var child = document.createElement('li');
+        var date = new Date();
+
+        var time = (date.getMonth() + 1) + '月' + date.getDate() + '日 ' + date.getHours() + ":" + date.getMinutes().toString().replace(/^(\d)$/, '0$1');
+
+        child.innerHTML = '<div class="userPic"><img src=' + src + '></div>' +
+          '<div class="content">' +
+          '<div class="userName"><a href="javascript:;">' + user + ':' + '</a></div>' +
+          '<div class="msgInfo">' + content + '</div>' +
+          '<div class="times"><span>' + time + '</span><a class="del" href="javascript:;">删除</a></div>' +
+          '</div>';
+        oUl.insertBefore(child, lis[0]);
+        var iHeight = child.clientHeight - parseFloat(css(child, 'paddingTop')) - parseFloat(css(child, 'paddingBottom'));
+        css(child, { height: 0, opacity: 0 });
+        var alpha = 0;
+        var oHeight = 0;
+        var timer = setInterval(function (){
+
+          css(child, { 'display': 'block', 'opacity': 0, 'height': (oHeight += 8) + 'px' });
+
+          if (oHeight > iHeight) {
+            clearInterval(timer);
+            css(child, 'height', iHeight + 'px');
+            timer = setInterval(function (){
+              css(child, 'opacity', alpha += 10);
+              if (alpha > 100) {
+                alpha = 100;
+                clearInterval(timer);
+                css(child, 'opacity', 100)
+              }
+            }, 30)
+          }
+        }, 30);
+        freash();
+      }
+      //类名取元素
+      function getByclass(clsName, parent){
+        var oParent = parent ? document.getElementById(parent) : document;
+        var arr = [];
+        var elements = oParent.getElementsByTagName('*');
+
+        for (var i = 0; i < elements.length; i++) {
+          if (elements[i].className == clsName) {
+            arr.push(elements[i]);
+          }
+        }
+        return arr;
+      }
+
+      //样式获取与设置
+      function css(obj, attr, value){
+        switch (arguments.length) {
+          case 2:
+            if (typeof arguments[1] == 'object') {
+              //为对象时设置样式，如{opacity:80,height:60px}
+              for (var i in attr) {
+                if (i == 'opacity') {
+                  obj.style[i] = attr[i] / 100;
+                  obj.style.filter = 'alpha(opacity=' + attr[i] + ')';
+                }
+                else {
+                  obj.style[i] = attr[i];
+                }
+              }
+            } else {
+              return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr];
+            }
+            break;
+          case 3:
+            if (attr == 'opacity') {
+              obj.style[attr] = value / 100;
+              obj.style.filter = 'alpha(opacity=' + value + ')';
+            } else {
+              obj.style[attr] = value;
+
+            }
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+      body, div { margin: 0; padding: 0; }
+      div { position: absolute; width: 66px; height: 45px; background: url(img/1.gif) no-repeat; top: 100px; left: 50px; }
+      p, input { margin: 10px; }
+    </style>
+  </head>
+  <body>
+    <input type="button" value="根据鼠标点击位置移动"><input type="button" value="根据标鼠标轨迹移动">
+    <p>请点击按钮激活功能！</p>
+    <div></div>
+
+
+  </body>
+  <script>
+    window.onload = function (){
+      var oBtn = document.getElementsByTagName('input');
+      var oP = document.getElementsByTagName('p')[0];
+      var oDiv = document.getElementsByTagName('div')[0];
+      var localtion = trail = false;
+
+
+
+      oBtn[0].onclick = function (event){
+        event = event || window.event;
+        console.log(this)
+        localtion = true;
+        trail = false;
+        event.stopPropagation ? event.stopPropagation() : event.cancelBubble = true;
+
+        clearEvent();
+
+        oBtn[0].value = '根据鼠标点击位置移动(已激活)';
+        oP.innerHTML = '鼠标点击页面， 人物将移动至鼠标位置！';
+
+        document.onclick = function (event){
+
+          if (localtion) {
+            event = event || window.event;
+            oDiv.style.background = 'url(img/2.gif) no-repeat';
+            startMove(oDiv, { x: event.clientX, y: event.clientY }, function (){
+              oDiv.style.background = 'url(img/1.gif) no-repeat';
+            })
+          }
+
+        }
+
+      };
+
+      oBtn[1].onclick = function (event){
+        event = event || window.event;
+        console.log(this)
+        event.stopPropagation ? event.stopPropagation() : event.cancelBubble = true;
+        trail = true;
+        localtion = false;
+        clearEvent();
+
+        oBtn[1].value = '根据标鼠标轨迹移动(已激活)';
+        oP.innerHTML = '按住鼠标左键，在页面划动，人物将按照鼠标轨迹移动。';
+        var oPos = [{ x: oDiv.offsetLeft, y: oDiv.offsetTop }];
+        if (trail) {
+          document.onmousedown = function (event){
+            event = event || window.event;
+            oPos.push({ x: event.clientX, y: event.clientY });
+            document.onmousemove = function (event){
+              event = event || window.event;
+              oPos.push({ x: event.clientX, y: event.clientY });
+            }
+          };
+
+          document.onmouseup = function (){
+            document.onmousemove = null;
+            oDiv.style.background = 'url(img/2.gif) no-repeat';
+            var mTimer = setInterval(function (){
+              if (oPos == 0) {
+                clearInterval(mTimer);
+                oDiv.style.background = 'url(img/1.gif) no-repeat';
+                return false;
+              }
+              oDiv.style.left = oPos[0].x + 'px';
+              oDiv.style.top = oPos[0].y + 'px';
+              oPos.shift();
+            }, 28)
+
+          }
+
+        }
+
+      };
+
+      function clearEvent(){
+        document.onclick = null;
+        document.onmousedown = null;
+        document.onmouseup = null;
+        document.onmousemove = null;
+        for (var i = 0; i < oBtn.length; i++) {
+          oBtn[i].value = oBtn[i].value.replace('(已激活)', '');
+          oBtn[i].onmousedown = oBtn[i].onmouseup = function (event){
+            event.stopPropagation ? event.stopPropagation() : event.cancelBubble = true;
+          }
+        }
+      }
+
+      function startMove(obj, oTarget, fnEnd){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function (){
+          doMove(obj, oTarget, fnEnd)
+        }, 30)
+      }
+
+      function doMove(obj, oTarget, fnEnd){
+        var iX = (oTarget.x - obj.offsetLeft) / 5;
+        var iY = (oTarget.y - obj.offsetTop) / 5;
+
+        iX = iX > 0 ? Math.ceil(iX) : Math.floor(iX);
+        iY = iY > 0 ? Math.ceil(iY) : Math.floor(iY);
+
+        if (oTarget.x == obj.offsetLeft && oTarget.y == obj.offsetTop) {
+          clearInterval(obj.timer);
+          fnEnd && fnEnd();
+        } else {
+          obj.style.left = obj.offsetLeft + iX + 'px';
+          obj.style.top = obj.offsetTop + iY + 'px';
+        }
+      }
+    }
+  </script>
+</html>

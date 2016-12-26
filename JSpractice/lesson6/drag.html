@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+      html, body { overflow: hidden; }
+      body, div, h2, p { margin: 0; padding: 0; }
+      body { color: #fff; background: #000; font: 12px/2 Arial; }
+      p { padding: 0 10px; margin-top: 10px; }
+      span { color: #ff0; padding-left: 5px; }
+      #box { position: absolute; width: 300px; height: 150px; background: #333; border: 2px solid #ccc; top: 50%; left: 50%; margin: -75px 0 0 -150px; }
+      #box h2 { height: 25px; cursor: move; background: #222; border-bottom: 2px solid #ccc; text-align: right; padding: 0 10px; line-height: 1; }
+      #box h2 a { color: #fff; font: 12px/25px Arial; text-decoration: none; outline: none; }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <h2><a href="javascript:;">点击回放拖动轨迹</a></h2>
+      <p><strong>Drag:</strong><span>false</span></p>
+      <p><strong>offsetTop:</strong><span>200</span></p>
+      <p><strong>offsetLeft:</strong><span>810</span></p>
+    </div>
+  </body>
+
+  <script>
+    window.onload = function (){
+      var oBox = document.getElementById('box');
+      var oH = oBox.getElementsByTagName('h2')[0];
+      var oSpans = oBox.getElementsByTagName('span');
+      var oA = oH.getElementsByTagName('a')[0];
+      var disX = 0;
+      var disY = 0;
+      var dragable = false;
+      var oPos = [{ x: oBox.offsetLeft + 'px', y: oBox.offsetTop + 'px' }];
+
+      function status(){
+        oSpans[0].innerHTML = dragable;
+        oSpans[1].innerHTML = oBox.offsetTop;
+        oSpans[2].innerHTML = oBox.offsetLeft;
+      }
+
+      oH.onmousedown = function (event){
+        event = event || window.event;
+        dragable = true;
+        disX = event.clientX - oBox.offsetLeft;
+        disY = event.clientY - oBox.offsetTop;
+        oPos.push({ x: oBox.offsetLeft + 'px', y: oBox.offsetTop + 'px' });
+        this.setCapture && this.setCapture();
+        status();
+        return false;
+      };
+
+      document.onmousemove = function (event){
+        if (!dragable) return false;
+        event = event || window.event;
+
+        var winW = document.documentElement.clientWidth || document.body.clientWidth;
+        var winH = document.documentElement.clientHeight || document.body.clientHeight;
+        var maxW = winW - oBox.offsetWidth;
+        var maxH = winH - oBox.offsetHeight;
+
+        var xPos = (event.clientX - disX) + 'px';
+        var yPos = (event.clientY - disY) + 'px';
+
+        oBox.style.left = xPos;
+        oBox.style.top = yPos;
+        oBox.style.margin = 0 + 'px';
+
+        if (oBox.offsetLeft < 0) {
+          oBox.style.left = 0 + 'px';
+        }
+        if (oBox.offsetLeft > maxW) {
+          oBox.style.left = maxW + 'px';
+        }
+        if (oBox.offsetTop < 0) {
+          oBox.style.top = 0 + 'px';
+        }
+        if (oBox.offsetTop > maxH) {
+          oBox.style.top = maxH + 'px';
+        }
+        oPos.push({ x: xPos, y: yPos });
+
+        status();
+
+        return false;
+      };
+
+      document.onmouseup = function (){
+        oH.releaseCapture && oH.releaseCapture();
+        dragable = false;
+        status();
+      };
+
+      oA.onclick = function (){
+        var timer = null;
+        //        if (oPos.length == 1) return;
+        timer = setInterval(function (){
+          var aPos = oPos.pop();
+
+          if (aPos) {
+
+            oBox.style.left = aPos.x;
+            oBox.style.top = aPos.y;
+            console.log('X: %d Y: %d', parseFloat(aPos.x), parseFloat(aPos.y));
+
+            status();
+          } else {
+            clearInterval(timer);
+          }
+        }, 16.7);
+
+        return false;
+      };
+
+      oA.onmousedown = function (event){
+        (event || window.event).cancelBubble = true
+      };
+
+      status();
+
+    }
+  </script>
+</html>
